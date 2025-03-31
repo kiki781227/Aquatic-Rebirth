@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
+  m_Name: Overfishing
+  m_EditorClassIdentifier: 
+  cardName: Overfishing
+  cardType: 5
+  cardDescription: "Des chalutiers tra\xEEnent leurs filets, capturant des poissons
+    en exc\xE8s, bien au-del\xE0 des limites durables. La mer se vide lentement,
+    les stocks de poissons s\u2019\xE9puisent, mena\xE7ant l'\xE9quilibre \xE9cologique
+    et l'avenir des \xE9cosyst\xE8mes marins."
+  cardSprite: {fileID: 21300000, guid: 0c998fb542b1287408fb56e43f9ef932, type: 3}
+  health: 7
+  value: 5
+  sellingPrice: 0
+  isSellable: 0

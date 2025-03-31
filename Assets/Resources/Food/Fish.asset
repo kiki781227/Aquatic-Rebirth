@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
+  m_Name: Fish
+  m_EditorClassIdentifier: 
+  cardName: Fish
+  cardType: 1
+  cardDescription: "Le poisson, source essentielle de prot\xE9ines et d'om\xE9ga-3,
+    fait partie int\xE9grante de l'alimentation humaine. Cependant, il est important
+    de le consommer avec mod\xE9ration pour pr\xE9server les \xE9cosyst\xE8mes marins
+    et \xE9viter l'\xE9puisement des ressources. Un choix nutritif, mais \xE0 prendre
+    avec responsabilit\xE9."
+  cardSprite: {fileID: 21300000, guid: 711c10851768e431d943e3aea6a5f9fd, type: 3}
+  health: 0
+  value: 3
+  sellingPrice: 2
+  isSellable: 1
