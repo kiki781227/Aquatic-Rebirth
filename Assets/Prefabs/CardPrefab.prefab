@@ -98,6 +98,7 @@ MonoBehaviour:
   priceText: {fileID: 5596336708395010298}
   nameText: {fileID: 6662408872091825451}
   healthText: {fileID: 284875969257662899}
+  nbQuestDone: 0
   excludeFromCounting: 0
 --- !u!61 &152845361508446093
 BoxCollider2D:

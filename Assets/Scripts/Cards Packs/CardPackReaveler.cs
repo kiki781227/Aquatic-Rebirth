@@ -27,19 +27,24 @@ public class CardPackReaveler : MonoBehaviour, IPointerDownHandler
     [Header("Settings")]
     private Transform parentTransform; // Référence à l'objet parent
     public GameObject cardPrefab; // La prefab à utiliser pour les cartes
+    
 
     private void Start()
     {
+        
+        
         CardDisplay cardDisplay = GetComponent<CardDisplay>();
         cardPack = cardDisplay.cardData as CardPack;
+     
+         
         if (cardPack == null || cardDisplay.cardData == null)
             Debug.LogError("CardDisplay ou cardData non assigné !");
         else
             Debug.Log("CardPack récupéré avec " + cardPack.containedCard.Count + " cartes, et cardDisplay non null.");
 
         if (cardPrefab == null)
-            Debug.LogError("Assignez une prefab de carte dans l'inspecteur!");
-
+            Debug.LogError("Assdignez une prefab de carte dans l'inspecteur!");
+          
         // Trouver dynamiquement l'objet parent dans la scène
         GameObject parentObject = GameObject.Find("CardManager");
         if (parentObject != null)
@@ -68,6 +73,7 @@ public class CardPackReaveler : MonoBehaviour, IPointerDownHandler
 
     private IEnumerator RevealNextCard()
     {
+        
         isRevealing = true;
         if (cardPack == null || revealedCount > cardPack.containedCard.Count)
         {
@@ -92,9 +98,9 @@ public class CardPackReaveler : MonoBehaviour, IPointerDownHandler
                 CardTager tagger = newCard.AddComponent<CardTager>();
                 tagger.SetCardData(cardPack.containedCard[revealedCount]);
 
-                // Assigne la donnée correspondant à l'index revealedCount
-                newCardDisplay.cardData = cardPack.containedCard[revealedCount];
-                newCardDisplay.UpdateCardDisplay(); // Met à jour l'affichage si nécessaire
+            
+            newCardDisplay.Initialize(cardPack.containedCard[revealedCount]);
+
             }
 
             newCard.SetActive(true);

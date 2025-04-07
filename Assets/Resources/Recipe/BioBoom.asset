@@ -9,23 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8366a4739f83d05478d49ca7e297027c, type: 3}
-  m_Name: StarterPack
+  m_Script: {fileID: 11500000, guid: 091617e8303eaae408fe274e85e76572, type: 3}
+  m_Name: BioBoom
   m_EditorClassIdentifier: 
-  cardName: Starter
-  cardType: 6
-  cardDescription: Pack de commencement !
-  cardSprite: {fileID: 0}
-  health: 0
-  value: 0
-  originalValue: 0
-  sellingPrice: 0
-  isSellable: 0
-  containedCard:
-  - {fileID: 11400000, guid: 89145bfbf5bef124a8ba73286c9e3ec1, type: 2}
+  ingredients:
+  - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
   - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
   - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
   - {fileID: 11400000, guid: 0b2dbebccd3e8b54c84ef5ed60a29b48, type: 2}
-  - {fileID: 11400000, guid: e9e28c52af2b82d47a4e55827c683cd1, type: 2}
-  toReveal: 5
-  isOpened: 0
+  result: {fileID: 11400000, guid: a7e1da0891cf5864587e60ad999a90c8, type: 2}
+  cooldown: 4

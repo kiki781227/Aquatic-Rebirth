@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using CardData;
 
 public class HeadUpDisplay : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class HeadUpDisplay : MonoBehaviour
         coinText.text = coinCards.ToString();
         coinText.color = coinCards < 1 ? Color.red : Color.black;
 
-        int nbCardsOnTable = DeckManager.Instance.activeCards.Count;
+        int nbCardsOnTable = DeckManager.Instance.CountCardsExcludingTypes(CardType.Ennemy, CardType.Human);
         //Debug.Log("Total cards on table: " + nbCardsOnTable);
         cardOnTableTxt.text = $"{nbCardsOnTable}/{maxCardOnTable}";
         cardOnTableTxt.color = nbCardsOnTable > maxCardOnTable ? Color.red : Color.black;   

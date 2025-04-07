@@ -61,8 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cards Packs\CardPackReaveler.cs" />
+    <Compile Include="Assets\Scripts\Craft\CraftingSlot.cs" />
     <Compile Include="Assets\A lot of useful icons_02\Scripts\dialogs\Inits\DialogInit.cs" />
     <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\Craft\CraftingRecipe.cs" />
     <Compile Include="Assets\Scripts\Cards Packs\CardPackDropZone.cs" />
     <Compile Include="Assets\Scripts\Managers\SellDropZone.cs" />
     <Compile Include="Assets\Scripts\Cards\CardDescription.cs" />
@@ -73,12 +75,12 @@
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Gameplay\RestartGame.cs" />
     <Compile Include="Assets\Scripts\Cards\CardDisplay.cs" />
+    <Compile Include="Assets\Scripts\Managers\CraftManager.cs" />
     <Compile Include="Assets\A lot of useful icons_02\Scripts\dialogs\DialogCall.cs" />
     <Compile Include="Assets\Scripts\UI\HeadUpDisplay.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\CarteDescriptionUIManager.cs" />
     <Compile Include="Assets\Scripts\Cards\CardMovement.cs" />
-    <Compile Include="Assets\Scripts\Managers\StackManager.cs" />
     <Compile Include="Assets\Scripts\UI\HideTabButton.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CardSpawner.cs" />
     <Compile Include="Assets\A lot of useful icons_02\Scripts\dialogs\Dialog.cs" />

@@ -7,29 +7,36 @@ using UnityEngine.EventSystems;
 
 public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Durée d'une journée (en secondes)")]
+    [Header("Donnee typee")]
     private float dayDuration = 120f;
     private float currentTimer;
     private int currentDay = 1;
     private bool isPaused = false; // Gère l'état de pause
+    private bool isPointerOver = false;
 
-    // Références UI
+    [Header("References UI")]
     public TMP_Text dayText;
     public Image timerBar;
+
+    [Header("Script")]
+    public CarteDescriptionUIManager uiManager;
+
+
+    [Header("CanvasGroup")]
+    public CanvasGroup cardManagerCanvasGroup; 
+    public CanvasGroup btnTimerCanvasGroup;
+
+
+    [Header("Objets")]
     public GameObject stopIcon;
     public GameObject resumeIcon;
     public GameObject feedHumansButton; // Bouton pour nourrir les humains
-    public CarteDescriptionUIManager uiManager;
-    private bool isPointerOver = false;
-
-    //
-    //public CanvasGroup interactionCanvasGroup;
-    public CanvasGroup cardManagerCanvasGroup;
-    //public CanvasGroup buyCanvasGroup;
-    public CanvasGroup btnTimerCanvasGroup;
     public GameObject questObject;
     public GameObject sellObject;
     public GameObject btnHide_ShowObject;
+    public GameObject craftZone;
+    public GameObject btnCraft;
+
 
     void Start()
     {
@@ -160,7 +167,7 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         questObject.SetActive(false);
         btnHide_ShowObject.SetActive(false);
         sellObject.SetActive(false);
-
+        SetActvieCraft(false);
     }
 
     // Appelé quand on clique sur le bouton Play
@@ -171,7 +178,8 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         resumeIcon.SetActive(false);
         questObject.SetActive(true);
         btnHide_ShowObject.SetActive(true);
-        sellObject.SetActive(true); 
+        sellObject.SetActive(true);
+        SetActvieCraft(true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -194,6 +202,7 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             canvasGroup.interactable = state;
             canvasGroup.blocksRaycasts = state;
+
         }
     }
 
@@ -204,5 +213,13 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     }
 
+    public void SetActvieCraft(bool state)
+    {
+        btnCraft.SetActive(state);
+        foreach (Transform child in craftZone.transform)
+        {
+            child.gameObject.SetActive(state);
+        }
+    }
 
 }

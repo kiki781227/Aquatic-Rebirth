@@ -36,15 +36,19 @@ public class CardDisplay : MonoBehaviour
 
     private void Start()
     {
-        //Debug.Log($"{Time.time} Start: {gameObject.name}");
-
-
-        
-            UpdateCardDisplay();
-        
-            
+        UpdateCardDisplay();   
     }
 
+    public void Initialize(Card cardData)
+    {
+        if (!excludeFromCounting && DeckManager.Instance != null)
+        {
+            this.cardData = cardData;
+            UpdateCardDisplay();
+            DeckManager.Instance.RegisterCard(this);
+        }
+
+    }
 
     public void UpdateCardDisplay()
     {
@@ -129,16 +133,6 @@ public class CardDisplay : MonoBehaviour
     }
 
 
-    void  OnEnable()
-    {
-        if (!excludeFromCounting && DeckManager.Instance != null)
-        {
-            //Debug.Log($"OnEnable appelé sur {gameObject.name} à {Time.time}");
-            //Debug.Log($"Enregistrement de la carte : {cardData.cardName}");
-            DeckManager.Instance.RegisterCard(this);
-        }
-        
-    }
 
     void OnDisable()
     {

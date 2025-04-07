@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 
 public class CardSpawner : MonoBehaviour
 {
+ 
     public GameObject cardPackPrefab; // Le prefab de la carte à instancier
     public GameObject cardPrefab;
     public Transform cardParent;  // Le parent où les cartes seront affichées
@@ -21,6 +22,8 @@ public class CardSpawner : MonoBehaviour
     private float cardHeight;
    
     private int cardCount = 0;
+
+    
 
     private void Start()
     {
@@ -61,10 +64,11 @@ public class CardSpawner : MonoBehaviour
         CardDisplay cardDisplay = newCard.GetComponent<CardDisplay>();
         if (cardDisplay != null)
         {
-            cardDisplay.cardData = cardData;
-            cardDisplay.UpdateCardDisplay();
-           
- 
+            cardDisplay.Initialize(cardData);
+            // Assigne les données de la carte
+            //cardDisplay.cardData = cardData;
+            //cardDisplay.UpdateCardDisplay();
+
         }
         newCard.SetActive(true);
     }
@@ -86,9 +90,10 @@ public class CardSpawner : MonoBehaviour
         CardDisplay cardDisplay = newCard.GetComponent<CardDisplay>();
         if (cardDisplay != null)
         {
-            cardDisplay.cardData = cardPackData; // Assigne les données de la carte
+            cardDisplay.Initialize(cardPackData);
+            //cardDisplay.cardData = cardPackData; // Assigne les données de la carte
             cardDisplay.priceTrait.SetActive(false);
-            cardDisplay.UpdateCardDisplay();
+            //cardDisplay.UpdateCardDisplay();
         }
         newCard.SetActive(true);
     }

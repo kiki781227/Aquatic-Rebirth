@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // Singleton (optionnel)
@@ -13,16 +14,17 @@ public class GameManager : MonoBehaviour
     public CardPack starterPackdata;
 
     [Header("Les objEts de la scene")]
-    //public GameObject tabQuest;
     public GameObject button;
     public GameObject tabDescription;
     public GameObject timer;
     public GameObject sellPlace;
     public GameObject buyCardsPack;
     public GameObject gameOverPopup;
+    public GameObject craftZone;
     public TMP_Text gameOverComments;
-    public GameObject buttonFeedHuman;
-    //public TMP_Text gameOverText; 
+    public GameObject craftPrefab;
+
+    
 
     [Header("Scripts")]
     public CardDisplay starterPackCard;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         StartGame(false);
         headUpDisplay.HideHUD();
         tabDescri.HideDescri();
@@ -178,10 +181,11 @@ public class GameManager : MonoBehaviour
     //-------------------- METHODE POUR START, STOP, GAMEOVER POP-UP----------------------\\
     private void StartGame(bool activer)
     {
-        button.SetActive(activer);
-        sellPlace.SetActive(activer);
-        buyCardsPack.SetActive(activer);
-        timer.SetActive(activer);
+        if (button != null) button.SetActive(activer);
+        if (sellPlace != null) sellPlace.SetActive(activer);
+        if (buyCardsPack != null) buyCardsPack.SetActive(activer);
+        if (timer != null) timer.SetActive(activer);
+        if(craftZone != null) craftZone.SetActive(activer);
         ResetFoodCardValues();
         
     }
@@ -239,7 +243,9 @@ public class GameManager : MonoBehaviour
     // Vérifie si le nombre de cartes sur la table dépasse la limite
     public bool CheckCardsOnTableLimit()
     {
-        return DeckManager.Instance.activeCards.Count > DeckManager.Instance.maxCardsOnTable;
+        int maxCardsOnTable = DeckManager.Instance.maxCardsOnTable;
+        int cardsOnTable = DeckManager.Instance.CountCardsExcludingTypes(CardType.Ennemy, CardType.Human);
+        return cardsOnTable > maxCardsOnTable;
     }
 
     //----------------- UPDATE OCEAN LIFE ----------------------\\
@@ -274,6 +280,12 @@ public class GameManager : MonoBehaviour
         }
         UpdateOceanLife(-(totalValue));
     }
+
+    
+
+
+
+
 
 }
 

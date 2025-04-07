@@ -21,6 +21,7 @@ public class DeckManager : MonoBehaviour
 
      // Evenement pour mettre a jour le HUD
         public event System.Action OnCardsUpdate;
+
         private System.Object _lock = new System.Object(); 
         
 
@@ -40,12 +41,27 @@ public class DeckManager : MonoBehaviour
     
     public void RegisterCard(CardDisplay card)
     {
+        if (card == null)
+        {
+            Debug.LogError("CardDisplay is null!");
+            return;
+        }
+
+        if (card.cardData == null)
+        {
+            Debug.LogError("Card data is null for CardDisplay: " + card.name);
+            return;
+        }
+
         lock (_lock) { // Permet de gerer l'acces a la liste activesCards.
             if (!activeCards.Contains(card))
             {
                 activeCards.Add(card);
                 OnCardsUpdate?.Invoke(); // Déclenche la mise à jour du HUD
+
+
             }
+
         }
 
     }
@@ -57,6 +73,8 @@ public class DeckManager : MonoBehaviour
         {
             activeCards.Remove(card);
             OnCardsUpdate?.Invoke();
+
+
         }
     }
 
@@ -81,6 +99,14 @@ public class DeckManager : MonoBehaviour
         return count;
     }
 
+    // Compte les cartes en excluant certains types
+    public int CountCardsExcludingTypes(params CardType[] excludedTypes)
+    {
+        int count = activeCards.Count(card => !excludedTypes.Contains(card.cardData.cardType));
+        //Debug.Log(count);
+        return count;
+    }
+
     // Récupère toutes les cartes d'un type spécifique dans activeCards et les retourne sous forme de tableau
     public CardDisplay[] GetCardsOfType(CardData.CardType type)
     {
@@ -89,21 +115,3 @@ public class DeckManager : MonoBehaviour
 }
 
 
-
-
-
-//public List<Card> humanCardsData = new List<Card>();
-//public List<Card> foodCardsData = new List<Card>();
-//public List<Card> rawMatCardsData = new List<Card>();
-//public List<Card> primaryMatCardsData = new List<Card>();
-//public List<CardPack> cardPackData = new List<CardPack>();
-//public List<Card> ennemyCardsData = new List<Card>();
-//public List<Card> ideeCardsData = new List<Card>();
-
-
-//humanCardsData.AddRange(Resources.LoadAll<Card>("Human"));
-//foodCardsData.AddRange(Resources.LoadAll<Card>("Food"));
-//rawMatCardsData.AddRange(Resources.LoadAll<Card>("Material/Primary"));
-//primaryMatCardsData.AddRange(Resources.LoadAll<Card>("Material/Raw"));
-//ennemyCardsData.AddRange(Resources.LoadAll<Card>("Ennemy"));
-//ideeCardsData.AddRange(Resources.LoadAll<Card>("Idee"));
