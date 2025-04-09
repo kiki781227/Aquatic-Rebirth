@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: Sorbent
+  m_Name: SeabinID
   m_EditorClassIdentifier: 
-  cardName: Sorbent
+  cardName: Seabin
   cardType: 10
-  cardDescription: 'Textile Waste + E-Chips  '
+  cardDescription: Net Fiber x2 + Bio-Pellets
   cardSprite: {fileID: 0}
   health: 0
-  value: 0
+  value: 2
+  originalValue: 2
   sellingPrice: 0
   isSellable: 0

@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: Kelpt
+  m_Name: BioBoomID
   m_EditorClassIdentifier: 
-  cardName: Kelpt
+  cardName: BioBoom
   cardType: 10
-  cardDescription: Dreft Wood + Rope
+  cardDescription: Bio-Pellets  + Net Fiber
   cardSprite: {fileID: 0}
   health: 0
-  value: 2
+  value: 1
+  originalValue: 1
   sellingPrice: 0
   isSellable: 0

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: Reefixer
+  m_Name: ReefStarID
   m_EditorClassIdentifier: 
-  cardName: Reefixer
-  cardType: 7
-  cardDescription: 'Coral Fragment  + Bio-Pellets '
-  cardSprite: {fileID: 21300000, guid: bdd53cc5264af014186a2e942cabe1ad, type: 3}
+  cardName: ReefStar
+  cardType: 10
+  cardDescription: Restored Coral x2 + Reef Steel
+  cardSprite: {fileID: 0}
   health: 0
-  value: 0
-  sellingPrice: 1
-  isSellable: 1
+  value: 2
+  sellingPrice: 0
+  isSellable: 0

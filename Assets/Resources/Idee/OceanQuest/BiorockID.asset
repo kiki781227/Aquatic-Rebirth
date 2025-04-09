@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: ShellBeld
+  m_Name: BiorockID
   m_EditorClassIdentifier: 
-  cardName: Shell Beld
+  cardName: Biorock
   cardType: 10
-  cardDescription: Sea Glass + Dreft Wood
+  cardDescription: Reef Steel + Restored Coral
   cardSprite: {fileID: 0}
   health: 0
-  value: 0
+  value: 1
   sellingPrice: 0
   isSellable: 0

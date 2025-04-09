@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091617e8303eaae408fe274e85e76572, type: 3}
-  m_Name: BeachVac
+  m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
+  m_Name: ShellBeldID
   m_EditorClassIdentifier: 
-  ingredients:
-  - {fileID: 11400000, guid: 89145bfbf5bef124a8ba73286c9e3ec1, type: 2}
-  result: {fileID: 11400000, guid: b37c44aa2694944468945d4d5bd498d1, type: 2}
-  cooldown: 2
+  cardName: Shell Beld
+  cardType: 10
+  cardDescription: Sea Glass + Dreaft Wood
+  cardSprite: {fileID: 0}
+  health: 0
+  value: 0
+  originalValue: 0
+  sellingPrice: 0
+  isSellable: 0

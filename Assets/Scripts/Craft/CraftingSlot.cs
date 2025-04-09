@@ -20,6 +20,8 @@ public class CraftingSlot : MonoBehaviour
         {
             currentCoolDown -= Time.deltaTime;
             UpdateCooldownBar();
+            CraftManager.Instance.UpdateCooldwon(currentCoolDown);
+
             if (currentCoolDown  <= 0)
             {
                 isInCooldown = false;
@@ -33,6 +35,8 @@ public class CraftingSlot : MonoBehaviour
     {
         if (isInCooldown) return;
 
+        RemoveDestroyedObjects();
+
         CardMovement cardMovement = collision.GetComponent<CardMovement>();
         CardDisplay cardDisplay = collision.GetComponent<CardDisplay>();
 
@@ -45,6 +49,7 @@ public class CraftingSlot : MonoBehaviour
                 cardDisplay.cardData.cardType != CardType.QuestCard &&
                 cardDisplay.cardData.cardType != CardType.Idea &&
                 cardDisplay.cardData.cardType != CardType.Food &&
+                cardDisplay.cardData.cardType != CardType.Coin &&
                 (!humanCardPresent || cardDisplay.cardData.cardType != CardType.Human)) 
             {
 
@@ -55,7 +60,7 @@ public class CraftingSlot : MonoBehaviour
 
                 if (cardDisplay.cardData.cardType == CardType.Human)
                 {
-                    cardMovement.hasBeenCounted = false;
+                    
 
                     // Déplacer la carte humaine hors de la vue
                     collision.transform.position = new Vector3(-1000, -1000, 0);
@@ -93,6 +98,8 @@ public class CraftingSlot : MonoBehaviour
         {
             Destroy(cardObject);
         }
+        // Nettoyer les objets détruits
+        RemoveDestroyedObjects();
         cardObjectsInSlot.Clear();
     }
 
@@ -103,6 +110,12 @@ public class CraftingSlot : MonoBehaviour
         {
             // Remplissage en proportion de currentCoolDown par rapport à la durée totale
             cooldownBar.fillAmount = currentCoolDown / totalCooldownTime;
+            
         }
+    }
+
+    private void RemoveDestroyedObjects()
+    {
+        cardObjectsInSlot.RemoveAll(card => card == null);
     }
 }

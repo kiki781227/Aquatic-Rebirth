@@ -2,12 +2,15 @@ using CardData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CraftManager : MonoBehaviour
 {
     public static CraftManager Instance { get; private set; }
     public List<CraftingRecipe> recipes;
     public CardSpawner cardSpawner;
+    private float actualCooldown;
+    private bool inCooldown = false;
 
 
     private void Awake()
@@ -22,13 +25,21 @@ public class CraftManager : MonoBehaviour
         }
     }
 
+
     public void Craft(CraftingSlot craftingSlot)
     {
+        // Nettoyer les objets détruits avant de commencer le crafting
+        RemoveDestroyedObjects(craftingSlot.cardObjectsInSlot);
 
+        StartCoroutine(CraftCoroutine(craftingSlot));
+    }
 
+    private IEnumerator CraftCoroutine(CraftingSlot craftingSlot)
+    {
         List<GameObject> cardObjectsInSlot = craftingSlot.cardObjectsInSlot;
         Dictionary<Card, int> cardsInSlot = new Dictionary<Card, int>();
         Card humanCard = null;
+        GameObject humanCardObject = null;
 
         foreach (GameObject cardObject in cardObjectsInSlot)
         {
@@ -48,22 +59,49 @@ public class CraftManager : MonoBehaviour
                 if (cardData.cardType == CardType.Human)
                 {
                     humanCard = cardData;
+                    humanCardObject = cardObject;
                 }
             }
         }
-        if (humanCard == null)
+
+        // Si aucune carte humaine n'est trouvée, ou si elle est déjà détruite
+        if (humanCard == null || humanCardObject == null)
         {
-            Debug.Log("Aucune carte humaine trouvée dans le slot de crafting.");
+            Debug.Log("Aucune carte humaine trouvée dans le slot de crafting ou la carte humaine a été détruite.");
             RespawnCards(craftingSlot);
-            return;
+            yield break;
         }
 
         foreach (CraftingRecipe recipe in recipes)
         {
             if (ContainsIngredients(cardsInSlot, recipe.GetIngredientsDictionary()))
             {
-                StartCoroutine(CraftWithCooldown(craftingSlot, recipe, humanCard));
-                return;
+                craftingSlot.StartCooldown(recipe.cooldown);
+                inCooldown = true;
+
+                // Attendre que le cooldown soit terminé
+                while (inCooldown)
+                {
+
+                    yield return null; // Attendre une frame
+                }
+
+                // Vérifiez si la carte humaine existe toujours
+                if (humanCardObject == null)
+                {
+                    Debug.Log("La carte humaine a été détruite pendant le cooldown.");
+                    RemoveDestroyedObjects(craftingSlot.cardObjectsInSlot);
+                    RespawnCards(craftingSlot);
+                    yield break;
+                }
+
+
+                // Instructions après le cooldown
+                cardSpawner.SpawnCard(recipe.result);
+                cardSpawner.SpawnCard(humanCard);
+                DestroyIngredients(craftingSlot, recipe.GetIngredientsDictionary());
+                craftingSlot.ClearSlot();
+                yield break;
             }
         }
 
@@ -71,20 +109,10 @@ public class CraftManager : MonoBehaviour
         RespawnCards(craftingSlot);
     }
 
-    private IEnumerator CraftWithCooldown(CraftingSlot craftingSlot, CraftingRecipe recipe, Card humanCard)
-    {
-        craftingSlot.StartCooldown(recipe.cooldown);
-        yield return new WaitForSeconds(recipe.cooldown);
-
-        // Crafting réussi après le cooldown
-        cardSpawner.SpawnCard(recipe.result);
-        cardSpawner.SpawnCard(humanCard);
-        DestroyIngredients(craftingSlot, recipe.GetIngredientsDictionary());
-        craftingSlot.ClearSlot();
-    }
 
     private bool ContainsIngredients(Dictionary<Card, int> cardsInSlot, Dictionary<Card, int> ingredients)
     {
+
         foreach (KeyValuePair<Card, int> ingredient in ingredients)
         {
             if (!cardsInSlot.ContainsKey(ingredient.Key) || cardsInSlot[ingredient.Key] < ingredient.Value)
@@ -112,6 +140,28 @@ public class CraftManager : MonoBehaviour
         }
         craftingSlot.ClearSlot();
     }
+
+    public void UpdateCooldwon(float cooldown)
+    {
+
+        actualCooldown = cooldown;
+
+        if (actualCooldown <= 0) inCooldown = false;
+        else inCooldown = true;
+    }
+
+    private void RemoveDestroyedObjects(List<GameObject> cardObjectsInSlot)
+    {
+        int initialCount = cardObjectsInSlot.Count;
+        cardObjectsInSlot.RemoveAll(card => card == null);
+        int removedCount = initialCount - cardObjectsInSlot.Count;
+
+        if (removedCount > 0)
+        {
+            Debug.Log($"Removed {removedCount} destroyed objects from cardObjectsInSlot.");
+        }
+    }
+
 }
 
 

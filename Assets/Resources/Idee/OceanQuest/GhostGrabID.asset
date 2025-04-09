@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: GhostGrab
+  m_Name: GhostGrabID
   m_EditorClassIdentifier: 
   cardName: GhostGrab
   cardType: 10

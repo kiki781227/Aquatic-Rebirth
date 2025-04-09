@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: ChipMaker
+  m_Name: SorbentID
   m_EditorClassIdentifier: 
-  cardName: ChipMaker
-  cardType: 7
-  cardDescription: 'Electronic Waste  + Reef Steel '
-  cardSprite: {fileID: 21300000, guid: bdd53cc5264af014186a2e942cabe1ad, type: 3}
+  cardName: Sorbent
+  cardType: 10
+  cardDescription: 'Textile Waste + E-Chips  '
+  cardSprite: {fileID: 0}
   health: 0
   value: 0
-  sellingPrice: 1
-  isSellable: 1
+  sellingPrice: 0
+  isSellable: 0

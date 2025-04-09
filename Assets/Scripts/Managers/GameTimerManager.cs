@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Donnee typee")]
-    private float dayDuration = 120f;
+    private float dayDuration = 20f;
     private float currentTimer;
     private int currentDay = 1;
     private bool isPaused = false; // Gère l'état de pause
@@ -40,6 +40,7 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     void Start()
     {
+        Debug.Log("Start est appele");
         currentTimer = dayDuration;
         UpdateDayUI();
         UpdateTimerBar();

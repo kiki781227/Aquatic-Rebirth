@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036086118c064e04ba9bcc303c6c2549, type: 3}
-  m_Name: Distiller
+  m_Name: BioPressID
   m_EditorClassIdentifier: 
-  cardName: Distiller
+  cardName: BioPress
   cardType: 7
-  cardDescription: 'Metal Wreck  + Sea Glass '
+  cardDescription: Plastic Waste + Net Fiber x2
   cardSprite: {fileID: 21300000, guid: bdd53cc5264af014186a2e942cabe1ad, type: 3}
   health: 0
   value: 0
+  originalValue: 0
   sellingPrice: 1
   isSellable: 1

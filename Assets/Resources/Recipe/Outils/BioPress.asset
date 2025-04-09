@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 091617e8303eaae408fe274e85e76572, type: 3}
-  m_Name: BioBoom
+  m_Name: BioPress
   m_EditorClassIdentifier: 
   ingredients:
-  - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
-  - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
-  - {fileID: 11400000, guid: 943bff65b485cc84c9a5317b1d268ba9, type: 2}
+  - {fileID: 11400000, guid: 1bbaea10326d672469039c1e08d69516, type: 2}
   - {fileID: 11400000, guid: 0b2dbebccd3e8b54c84ef5ed60a29b48, type: 2}
-  result: {fileID: 11400000, guid: a7e1da0891cf5864587e60ad999a90c8, type: 2}
-  cooldown: 4
+  - {fileID: 11400000, guid: 0b2dbebccd3e8b54c84ef5ed60a29b48, type: 2}
+  result: {fileID: 11400000, guid: 25e0035927e20ca44ad014e8584bf6f6, type: 2}
+  cooldown: 6
