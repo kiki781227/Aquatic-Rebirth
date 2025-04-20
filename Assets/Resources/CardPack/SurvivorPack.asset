@@ -22,10 +22,12 @@ MonoBehaviour:
   sellingPrice: 0
   isSellable: 0
   containedCard:
-  - {fileID: 11400000, guid: d81382d11d26ce74eba03f84155e69ef, type: 2}
-  - {fileID: 11400000, guid: 9d094ea82fc4edf4f9fffdd2aa750cd0, type: 2}
+  - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
+  - {fileID: 11400000, guid: 1bbaea10326d672469039c1e08d69516, type: 2}
   - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
   - {fileID: 11400000, guid: 2897bdec3d403f448a6305649cd2566b, type: 2}
   - {fileID: 11400000, guid: d8375fb8932ea5a4bae66d9be0c9292f, type: 2}
+  - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
   toReveal: 5
   isOpened: 1
+  isStarterPack: 0

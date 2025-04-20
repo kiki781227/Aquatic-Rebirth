@@ -18,11 +18,20 @@ public class CraftManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            
         }
         else
         {
             Destroy(gameObject);
         }
+        LoadRecipes();
+    }
+
+    public void LoadRecipes()
+    {
+        recipes.AddRange(Resources.LoadAll<CraftingRecipe>("Recipe/OceanQuest"));
+        recipes.AddRange(Resources.LoadAll<CraftingRecipe>("Recipe/Tool"));
+        recipes.AddRange(Resources.LoadAll<CraftingRecipe>("Recipe/ToolProduced"));
     }
 
 
@@ -39,6 +48,7 @@ public class CraftManager : MonoBehaviour
         List<GameObject> cardObjectsInSlot = craftingSlot.cardObjectsInSlot;
         Dictionary<Card, int> cardsInSlot = new Dictionary<Card, int>();
         Card humanCard = null;
+        Card toolCard = null;
         GameObject humanCardObject = null;
 
         foreach (GameObject cardObject in cardObjectsInSlot)
@@ -60,6 +70,10 @@ public class CraftManager : MonoBehaviour
                 {
                     humanCard = cardData;
                     humanCardObject = cardObject;
+                }
+                else if(cardData.cardType == CardType.ToolCrafted)
+                {
+                    toolCard = cardData; // La carte humaine peut etre detruite au cours d'un craft
                 }
             }
         }
@@ -95,10 +109,15 @@ public class CraftManager : MonoBehaviour
                     yield break;
                 }
 
+                if(toolCard != null)
+                {
+                    cardSpawner.SpawnCard(toolCard);
+                }
 
                 // Instructions après le cooldown
                 cardSpawner.SpawnCard(recipe.result);
                 cardSpawner.SpawnCard(humanCard);
+                
                 DestroyIngredients(craftingSlot, recipe.GetIngredientsDictionary());
                 craftingSlot.ClearSlot();
                 yield break;
@@ -115,6 +134,7 @@ public class CraftManager : MonoBehaviour
 
         foreach (KeyValuePair<Card, int> ingredient in ingredients)
         {
+            // Vérifiez si la carte est présente dans le slot de crafting et si la quantité est suffisante
             if (!cardsInSlot.ContainsKey(ingredient.Key) || cardsInSlot[ingredient.Key] < ingredient.Value)
             {
                 return false;
@@ -152,14 +172,14 @@ public class CraftManager : MonoBehaviour
 
     private void RemoveDestroyedObjects(List<GameObject> cardObjectsInSlot)
     {
-        int initialCount = cardObjectsInSlot.Count;
+        //int initialCount = cardObjectsInSlot.Count;
         cardObjectsInSlot.RemoveAll(card => card == null);
-        int removedCount = initialCount - cardObjectsInSlot.Count;
+        //int removedCount = initialCount - cardObjectsInSlot.Count;
 
-        if (removedCount > 0)
-        {
-            Debug.Log($"Removed {removedCount} destroyed objects from cardObjectsInSlot.");
-        }
+        //if (removedCount > 0)
+        //{
+        //    Debug.Log($"Removed {removedCount} destroyed objects from cardObjectsInSlot.");
+        //}
     }
 
 }

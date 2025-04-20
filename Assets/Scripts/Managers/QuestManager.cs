@@ -23,6 +23,7 @@ public class QuestManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            
         }
         else
         {
@@ -80,7 +81,10 @@ public class QuestManager : MonoBehaviour
         foreach (QuestSlot slot in questSlots)
         {
             slot.isFilled = false;
+
+            // Reset l'affichage du progres de la quete a 0
             slot.cardDisplay.ResetQuestProgress();
         }
     }
+
 }

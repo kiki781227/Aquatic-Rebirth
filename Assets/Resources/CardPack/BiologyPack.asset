@@ -21,11 +21,6 @@ MonoBehaviour:
   originalValue: 10
   sellingPrice: 0
   isSellable: 0
-  containedCard:
-  - {fileID: 11400000, guid: 9d094ea82fc4edf4f9fffdd2aa750cd0, type: 2}
-  - {fileID: 11400000, guid: 2897bdec3d403f448a6305649cd2566b, type: 2}
-  - {fileID: 11400000, guid: ec779756a87f1fa44a5c3bdd1e117ed9, type: 2}
-  - {fileID: 11400000, guid: cb79e22b3d6983d4489d23902aaf3d2a, type: 2}
-  - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
+  containedCard: []
   toReveal: 5
   isOpened: 0

@@ -18,8 +18,9 @@ MonoBehaviour:
   cardSprite: {fileID: 0}
   health: 0
   value: 4
+  originalValue: 4
   sellingPrice: 0
   isSellable: 0
-  containedCard:
-  - {fileID: 11400000, guid: d81382d11d26ce74eba03f84155e69ef, type: 2}
+  containedCard: []
   toReveal: 5
+  isOpened: 0

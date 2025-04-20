@@ -7,6 +7,7 @@ using CardData;
 
 public class CardDisplay : MonoBehaviour
 {
+    [Header("Carte donnees")]
     public Card cardData;
     public Image cardImage;
     public Image traitImage;
@@ -15,22 +16,25 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text priceText;
     public TMP_Text nameText;
     public TMP_Text healthText;
-    public int nbQuestDone;
-    public bool excludeFromCounting;
 
+    [Header("Quest donnees")]
+    public int nbQuestDone;
+    //public bool excludeFromCounting;
+
+    // Liste des couleurs de carte
     private Color[] cardColors =
     {
-        new Color(245f / 255f, 245f / 255f, 220f / 255f, 255f / 255f), // Human Card Color
+        new Color(245f / 255f, 245f / 255f, 220f / 255f, 180f / 255f), // Human Card Color
         new Color(142f / 255f, 108f / 255f, 70f / 255f), // Food Card Color
-        new Color (243f / 255f , 230f / 255f, 47f / 255f), // Coin Card Color
+        new Color (243f / 255f , 230f / 255f, 47f / 255f, 180f / 255f), // Coin Card Color
         new Color (70f / 255f, 73f / 255f,76f / 255f, 232f / 255f), // Raw Card Material
-        new Color (137f / 255f, 139f / 255f, 151f / 255f), // Primary Card Material
+        new Color (180f / 255f, 177f / 255f, 177f / 255f, 252f / 255f), // Primary Card Material
         new Color (141f / 255f,70f / 255f,72f / 255f), // Ennemy Card 
-        new Color (30f / 255f, 122f / 255f, 118f / 255f), // Pack Card
+        new Color (47f / 255f, 93f / 255f, 107f / 255f), // Pack Card
         new Color(117f / 255f, 184f/ 255f, 255f / 255f, 255f / 255f ),// Idee Card Color
-        new Color(0,0,0,0),
-        new Color(160f/255f, 244f/255f, 183f/255f, 255f/255f), // Quest Card color 
-        new Color(45f/255f, 45f/255f, 45f/255f, 192f/255f),
+        new Color(241f / 255f, 220f / 255f ,245f / 255f, 255f/255f), // ToolCrafted Card Color
+        new Color(160f / 255f, 244f / 255f, 183f / 255f, 255f / 255f), // Quest Card color 
+        new Color(45f / 255f, 45f / 255f, 45f / 255f, 192f / 255f), // Quest Slot color
     };
 
 
@@ -41,11 +45,12 @@ public class CardDisplay : MonoBehaviour
 
     public void Initialize(Card cardData)
     {
-        if (!excludeFromCounting && DeckManager.Instance != null)
+        if (/*!excludeFromCounting &&*/ DeckManager.Instance != null)
         {
             this.cardData = cardData;
             UpdateCardDisplay();
             DeckManager.Instance.RegisterCard(this);
+            //cardData.value = cardData.originalValue;
         }
 
     }
@@ -63,54 +68,49 @@ public class CardDisplay : MonoBehaviour
         nameText.text = cardData.cardName;
 
         switch (indexCardType) { 
-            case 0:
+            case 0: // Human
                 healthText.text = cardData.health.ToString();
                 traitImage.sprite = cardData.cardSprite;
                 priceTrait.SetActive(false);
                 break;
 
-            case 1:
+            case 1: // Food
                 
                 healthText.text = "+" + cardData.value.ToString();
                 priceText.text = cardData.sellingPrice.ToString();
                 traitImage.sprite = cardData.cardSprite;
                 break;
 
-            case 2:
-            case 5:
+            case 2: // Coin
+            case 5: // Ennemy
                 priceTrait.SetActive(false);
                 healthTrait.SetActive(false);
                 traitImage.sprite = cardData.cardSprite;
-                break;
+                break;      
 
-          
-
-            case 6:
-                    // Display du pack sur la partie achat
-                    string pricePack = cardData.value.ToString();
-                    priceText.text = pricePack;
-
-                    break;
+            case 6: // CardPack
+                 string pricePack = cardData.value.ToString();
+                 priceText.text = pricePack;
+                 break;
 
 
-                case 9:
-                    healthTrait.SetActive(false);
-                    traitImage.sprite = cardData.cardSprite;
-                    priceText.text = cardData.sellingPrice.ToString();
-                    break;
+            case 9: // QuestCard
+                 healthTrait.SetActive(false);
+                 traitImage.sprite = cardData.cardSprite;
+                 priceText.text = cardData.sellingPrice.ToString();
+                  break;
 
-                case 10:
-                    cardData.value = Random.Range(1, 3);
-                    priceText.text = $"{nbQuestDone}/{cardData.value}";
-                    break;
+            case 10: // QuestSlot
+                 cardData.value = 1;
+                 priceText.text = $"{nbQuestDone}/{cardData.value}";
+                 break;
 
-                default: // Cas: ToolCarafted , Idea, RawMaterial, PrimaryMaterial 
+            default: // Cas: ToolCarafted , Idea, RawMaterial, PrimaryMaterial 
                 priceText.text = cardData.sellingPrice.ToString();
-                    healthText.text = cardData.health.ToString();
-                    traitImage.sprite = cardData.cardSprite;
-                    healthTrait.SetActive(false);
-                    break;
-
+                healthText.text = cardData.health.ToString();
+                traitImage.sprite = cardData.cardSprite;
+                healthTrait.SetActive(false);
+                break;
                 }
     }
 
@@ -136,10 +136,8 @@ public class CardDisplay : MonoBehaviour
 
     void OnDisable()
     {
-        if (!excludeFromCounting && DeckManager.Instance != null)
+        if (/*!excludeFromCounting &&*/ DeckManager.Instance != null)
         {
-            //Debug.Log($"OnEnable appelé sur {gameObject.name} à {Time.time}");
-            //Debug.Log($"Désenregistrement de la carte : {cardData.cardName}");
             DeckManager.Instance.UnregisterCard(this);
         }
         

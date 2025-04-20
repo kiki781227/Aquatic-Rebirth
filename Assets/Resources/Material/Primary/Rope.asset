@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Rope
   m_EditorClassIdentifier: 
   cardName: Rope
-  cardType: 3
+  cardType: 4
   cardDescription: Corde, tres utile pour fixer
   cardSprite: {fileID: -1570953860, guid: a5129965d9f7c604cb1842f6662f7e07, type: 3}
   health: 0
   value: 0
   sellingPrice: 1
   isSellable: 1
-  value2: 0

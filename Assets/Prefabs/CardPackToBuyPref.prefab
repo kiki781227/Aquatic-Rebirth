@@ -60,7 +60,7 @@ MonoBehaviour:
   priceText: {fileID: 3412523402772174321}
   nameText: {fileID: 2295752522521948859}
   healthText: {fileID: 0}
-  excludeFromCounting: 1
+  nbQuestDone: 0
 --- !u!61 &4359867839254286819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.91, y: 3.81}
+  m_Size: {x: 1.26, y: 1.41}
   m_EdgeRadius: 0
 --- !u!114 &-5741479215525761706
 MonoBehaviour:
@@ -133,6 +133,8 @@ MonoBehaviour:
   cardPackPrefab: {fileID: 1471144686358571157, guid: 8e0ce8c6b9c6b9e49880e73351ddf791, type: 3}
   cardPrefab: {fileID: 1193552801858322567, guid: 33591bd26d9bc14469dea37a29d8157a, type: 3}
   cardParent: {fileID: 0}
+  columns: 4
+  spacing: 10
 --- !u!1 &3068017297825685270
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +253,7 @@ RectTransform:
   m_GameObject: {fileID: 3129442125859253959}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7094697236173136355}
@@ -260,7 +262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.79, y: -1.4}
+  m_AnchoredPosition: {x: -0.73, y: -1.32}
   m_SizeDelta: {x: 2.5, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6221904317406442712
@@ -447,8 +449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000087917, y: 0.62}
-  m_SizeDelta: {x: 2.5, y: 0.74996}
+  m_AnchoredPosition: {x: -0.00529, y: 0.62}
+  m_SizeDelta: {x: 2.76469, y: 0.74996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6548779403911366141
 CanvasRenderer:
@@ -505,8 +507,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.42
-  m_fontSizeBase: 0.42
+  m_fontSize: 0.48
+  m_fontSizeBase: 0.48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -818,8 +820,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

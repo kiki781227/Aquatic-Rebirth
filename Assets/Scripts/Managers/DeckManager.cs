@@ -17,18 +17,18 @@ public class DeckManager : MonoBehaviour
 
      // Listes des cartes actifs sur la table
         public List<CardDisplay> activeCards = new List<CardDisplay>();
+
+    // Load les data des cartes quest a remplir 
         public List<Card> questCardIdea = new List<Card>();
 
      // Evenement pour mettre a jour le HUD
         public event System.Action OnCardsUpdate;
 
-        private System.Object _lock = new System.Object(); 
-        
-
     void Awake()
     {
         //Debug.Log($"{Time.time} Awake: {gameObject.name}");
         if (Instance == null) Instance = this;
+        else Destroy(gameObject);
         LoadCards();
     }
 
@@ -53,17 +53,11 @@ public class DeckManager : MonoBehaviour
             return;
         }
 
-        lock (_lock) { // Permet de gerer l'acces a la liste activesCards.
-            if (!activeCards.Contains(card))
-            {
-                activeCards.Add(card);
-                OnCardsUpdate?.Invoke(); // Déclenche la mise à jour du HUD
-
-
-            }
-
+        if (!activeCards.Contains(card))
+        {
+           activeCards.Add(card);
+           OnCardsUpdate?.Invoke(); // Déclenche la mise à jour du HUD
         }
-
     }
 
 
@@ -73,8 +67,6 @@ public class DeckManager : MonoBehaviour
         {
             activeCards.Remove(card);
             OnCardsUpdate?.Invoke();
-
-
         }
     }
 
@@ -112,6 +104,12 @@ public class DeckManager : MonoBehaviour
     {
         return activeCards.Where(card => card.cardData.cardType == type).ToArray();
     }
+
+    public void NotifyFoodCardsUpdated()
+    {
+        OnCardsUpdate?.Invoke();
+    }
+
 }
 
 

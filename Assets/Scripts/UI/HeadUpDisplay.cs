@@ -16,6 +16,7 @@ public class HeadUpDisplay : MonoBehaviour
     private int oceanMaxHealth;
     private int oceanActualHealth;
     private bool isHudUpdatePending = false;
+   
     [SerializeField] private CanvasGroup hudCanvasGroup;
 
     // Start is called before the first frame update
@@ -61,6 +62,7 @@ public class HeadUpDisplay : MonoBehaviour
 
         
         int totalFoodValue = CalculateTotalFoodValue();
+        Debug.Log($"totalFoodValue{totalFoodValue}");
         int humansCards = DeckManager.Instance.CountCardsOfType(CardData.CardType.Human);
         nbfoodRequired = 2 + humansCards - 1;
         //Debug.Log("Human cards count : " + humansCards);
@@ -94,10 +96,17 @@ public class HeadUpDisplay : MonoBehaviour
     private int CalculateTotalFoodValue()
     {
         int totalFoodValue = 0;
+        int count = 0;
         CardDisplay[] foodCards = DeckManager.Instance.GetCardsOfType(CardData.CardType.Food);
         foreach (CardDisplay foodCard in foodCards)
         {
-            totalFoodValue += foodCard.cardData.value;
+            if (foodCard != null && foodCard.cardData != null && foodCard.gameObject.activeInHierarchy)
+            {
+                count++;
+                //Debug.Log("nbCarteFood sur table: " + count);
+                Debug.Log("foodValue apres update: " +foodCard.cardData.value); 
+                totalFoodValue += foodCard.cardData.value;
+            }
         }
         return totalFoodValue;
     }

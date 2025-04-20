@@ -9,13 +9,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     private RectTransform rectTransform;
     private Canvas canvas;
-    private RectTransform canvasRect;
+    private RectTransform canvasRect; 
     private Vector2 originalLocalPointerPosition; // Stockera la position du cklick sur l'ecran mais en coordonnee Canva
     private Vector3 originalPanelLocalPosition; // Stockera la position locale actuel de la carte dans le Canva
     private Vector3 originalScale;
+    private AudioSource audioSource;
 
-    //private CanvasGroup canvasGroup;
- 
+
+
 
     [HideInInspector] public bool hasBeenCounted;  
     [HideInInspector] public bool isDragging;
@@ -25,14 +26,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasRect = canvas.GetComponent<RectTransform>();  // Pour avoir le RecTransform du canva de la carte, manipuler pour que l'objet ne sort pas de l'ecran
         originalScale = rectTransform.localScale; // Stocke l'echelle initiale de l'objet
-        //canvasGroup = GetComponent<CanvasGroup>();
-
-   
-
+        
     }
 
     // Permet d'activer des effets visuels sur la carte lorsque le curseur est dessus
@@ -62,25 +61,29 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             out originalLocalPointerPosition);
 
         originalPanelLocalPosition = rectTransform.localPosition;
+
+ 
+        audioSource.Play();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Coin Part
+        glowEffect.SetActive(false);
+        rectTransform.localScale = originalScale;
         hasBeenCounted = false;
         isDragging = true;
         //Debug.Log(isDraggin);       
         transform.SetAsLastSibling();
-        //canvasGroup.blocksRaycasts = false;
+       
     }
 
-    // Permet de calculer le deplacement lors du drag de la carte grace a sa position initiale lors du click (OnPointerDown)
+    // Permet de calculer la nouvelle postion de la carte en fonction du deplacement du pointer (curseur) sur le canvas
     public void OnDrag(PointerEventData eventData)
     {
    
 
-        glowEffect.SetActive(false);
-        Vector2 localPointerPosition; //Stocke sa position lors du drag
+       
+        Vector2 localPointerPosition; //Stocke la position du pointer lors du drag en canvas
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
             eventData.position,

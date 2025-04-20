@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bio-Pellets
   m_EditorClassIdentifier: 
   cardName: Bio-Pellets
-  cardType: 3
+  cardType: 4
   cardDescription: "Des granul\xE9s organiques (ex : bois, d\xE9chets agricoles)
     utilis\xE9s pour l\u2019\xE9nergie"
   cardSprite: {fileID: -1570953860, guid: a5129965d9f7c604cb1842f6662f7e07, type: 3}
@@ -21,4 +21,3 @@ MonoBehaviour:
   value: 0
   sellingPrice: 1
   isSellable: 1
-  value2: 0

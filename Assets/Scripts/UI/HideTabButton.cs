@@ -6,24 +6,31 @@ public class TabHide : MonoBehaviour
 {
     public GameObject hideButton;
     public GameObject showButton;
-    public HideTabOceanQuest hideTabOceanQuest;
-    public GameObject tabDescri;
-
-
+    public GameObject tabOperations;
+    public TabManager tabManager;
+    public CanvasGroup tabDescriCanvasGroup;
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        Hide();
+    }
 
     public void Hide()
     {
-        hideTabOceanQuest.Hidetab();
-
-        tabDescri.SetActive(false);
+        tabDescriCanvasGroup.alpha = 0;
+        audioSource.Play();
+        tabManager.ShowTab("Quest");
+        tabOperations.SetActive(false);
         hideButton.SetActive(false);
         showButton.SetActive(true);
     }
 
     public void Show()
     {
-        hideTabOceanQuest.Showtab();
-        tabDescri.SetActive(true);
+        tabDescriCanvasGroup.alpha = 1;
+        audioSource.Play();
+        tabOperations.SetActive(true);
         hideButton.SetActive(true);
         showButton.SetActive(false);
     }

@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 551213775686661339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 45, y: 45, z: 1}
+  m_LocalScale: {x: 57, y: 57, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7849370026153604365}
@@ -62,7 +62,6 @@ MonoBehaviour:
   nameText: {fileID: 484453636123490278}
   healthText: {fileID: 0}
   nbQuestDone: 0
-  excludeFromCounting: 1
 --- !u!61 &8096003936041682926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 3.5}
+  m_Size: {x: 1.26, y: 1.41}
   m_EdgeRadius: 0
 --- !u!50 &1565665479353884309
 Rigidbody2D:
@@ -592,8 +591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000087917, y: 0.44}
-  m_SizeDelta: {x: 2.5, y: 1.51}
+  m_AnchoredPosition: {x: -0.01211, y: 0.28653}
+  m_SizeDelta: {x: 2.68578, y: 1.81694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1960562229469331064
 CanvasRenderer:
@@ -650,8 +649,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.34
-  m_fontSizeBase: 0.34
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

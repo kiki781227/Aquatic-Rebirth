@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091617e8303eaae408fe274e85e76572, type: 3}
+  m_Name: FishRcp
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 11400000, guid: eb1da4eeede1da949bf9c62725d396ef, type: 2}
+  result: {fileID: 11400000, guid: ec779756a87f1fa44a5c3bdd1e117ed9, type: 2}
+  cooldown: 15

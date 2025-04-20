@@ -27,8 +27,6 @@ public class CardSpawner : MonoBehaviour
 
     private void Start()
     {
-
-   
         RectTransform rt = cardPackPrefab.GetComponent<RectTransform>();
         cardWidth = rt.sizeDelta.x * 50;
         cardHeight = rt.sizeDelta.y * 50;
@@ -59,6 +57,13 @@ public class CardSpawner : MonoBehaviour
 
 
         CardTager tagger = newCard.AddComponent<CardTager>();
+
+        if (cardData.cardType == CardType.Food)
+        {
+            // On clone le ScriptableObject selectedCard
+            cardData = Instantiate(cardData);
+        }
+
         tagger.SetCardData(cardData);
 
         CardDisplay cardDisplay = newCard.GetComponent<CardDisplay>();
@@ -100,20 +105,23 @@ public class CardSpawner : MonoBehaviour
 
     private Vector2 GetNextCardPosition()
     {
-        int row = cardCount / columns;
-        int column = cardCount % columns;
+        int row = cardCount / columns; // Divise le nombre total de cartes par le nombre de colonnes pour déterminer la ligne actuelle. La ligne commence par 0
+        //Debug.Log("row: " + row);
+        int column = cardCount % columns; // Permet de determiner la colonne actuelle.
+        //Debug.Log("column: " + column);
 
-        float xPosition = (column - (columns - 1) / 2f) * (cardWidth + spacing);
-        float yPosition = -(row - (columns - 1) / 2f) * (cardHeight + spacing);
+        float xPosition = (column - (columns - 1) / 2f) * (cardWidth + spacing); // position horizontale de la carte
+        float yPosition = -(row - (columns - 1) / 2f) * (cardHeight + spacing); // Position vertical
 
         cardCount++;
+
+        if (cardCount >= 8) { 
+            cardCount = 0;
+        }
         return new Vector2(xPosition, yPosition);
     }
 
-    public void ResetCardPosition()
-    {
-        cardCount = 0;
-    }
+    
 
 }
 

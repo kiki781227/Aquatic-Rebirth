@@ -21,6 +21,8 @@ public class QuestSlot : MonoBehaviour
     public void FillSlot(GameObject card)
     {
         numberOfCardDroped++;
+
+        //Update l'affichage du nombre de cartes dans le slot
         cardDisplay.UpdateQuestProgress(numberOfCardDroped);
         
         if (!isFilled)

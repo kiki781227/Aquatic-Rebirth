@@ -17,14 +17,17 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [Header("References UI")]
     public TMP_Text dayText;
     public Image timerBar;
+    private AudioSource audioSource;
 
     [Header("Script")]
     public CarteDescriptionUIManager uiManager;
-
+    public TabHide tabHide;
 
     [Header("CanvasGroup")]
     public CanvasGroup cardManagerCanvasGroup; 
     public CanvasGroup btnTimerCanvasGroup;
+    public CanvasGroup btnHide_ShowCanvasGroup;
+    public CanvasGroup bckgrndOverlayCanvasGroup;
 
 
     [Header("Objets")]
@@ -33,13 +36,16 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject feedHumansButton; // Bouton pour nourrir les humains
     public GameObject questObject;
     public GameObject sellObject;
-    public GameObject btnHide_ShowObject;
     public GameObject craftZone;
-    public GameObject btnCraft;
+    public GameObject pauseTxt;
+    public GameObject buyplace;
+    
 
 
     void Start()
     {
+
+        audioSource = GetComponent<AudioSource>();
         Debug.Log("Start est appele");
         currentTimer = dayDuration;
         UpdateDayUI();
@@ -83,7 +89,9 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void FeedHumans()
     {
-        GameManager.Instance.FeedHumans();
+        audioSource.Play();
+        if (GameManager.Instance.FeedHumans() == false) return;
+        //GameManager.Instance.FeedHumans();
 
         // Masque le bouton après avoir nourri les humains
         feedHumansButton.SetActive(false);
@@ -110,12 +118,14 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private IEnumerator CheckCardsOnTable()
     {
         int maxCardOnTable = DeckManager.Instance.maxCardsOnTable;
+        Debug.Log("Limite de carte sur table: " + maxCardOnTable);
         while (true)
         {
-            int nbCardsOnTable = DeckManager.Instance.activeCards.Count;
-
+            int nbCardsOnTable = DeckManager.Instance.CountCardsExcludingTypes(CardData.CardType.Ennemy,CardData.CardType.Human);
+            Debug.Log(" carte sur table: " + nbCardsOnTable);
             if (nbCardsOnTable <= maxCardOnTable)
             {
+                Debug.Log("carte sur table est inferieure a la limite");
                 // Réactive les interactions utilisateur et passe à la nouvelle journée
                 SetAllCanvasGroupState(true);
                 NewDay();
@@ -162,25 +172,46 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // Appelé quand on clique sur le bouton Pause
     public void Pause()
     {
+        bckgrndOverlayCanvasGroup.alpha = 1f;
+        audioSource.Play();
         isPaused = true;
+
+        
         stopIcon.SetActive(false);
         resumeIcon.SetActive(true);
-        questObject.SetActive(false);
-        btnHide_ShowObject.SetActive(false);
+
+        buyplace.SetActive(false);
         sellObject.SetActive(false);
-        SetActvieCraft(false);
+        pauseTxt.SetActive(true);
+
+        SetCanvasGroupState(cardManagerCanvasGroup, false);
+
+        tabHide.Hide();
+        btnHide_ShowCanvasGroup.interactable = false;
+        btnHide_ShowCanvasGroup.blocksRaycasts = false;
     }
 
     // Appelé quand on clique sur le bouton Play
     public void Play()
     {
+        bckgrndOverlayCanvasGroup.alpha = 0f;
+        audioSource.Play();
         isPaused = false;
+
+        SetCanvasGroupState(cardManagerCanvasGroup, true);
+
         stopIcon.SetActive(true);
         resumeIcon.SetActive(false);
-        questObject.SetActive(true);
-        btnHide_ShowObject.SetActive(true);
+
+        buyplace.SetActive(true);
         sellObject.SetActive(true);
-        SetActvieCraft(true);
+        pauseTxt.SetActive(false);
+       
+        
+   
+        btnHide_ShowCanvasGroup.interactable = true;
+        btnHide_ShowCanvasGroup.blocksRaycasts = true;
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -214,13 +245,6 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     }
 
-    public void SetActvieCraft(bool state)
-    {
-        btnCraft.SetActive(state);
-        foreach (Transform child in craftZone.transform)
-        {
-            child.gameObject.SetActive(state);
-        }
-    }
+
 
 }

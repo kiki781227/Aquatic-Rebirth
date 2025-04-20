@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Restored Coral
   m_EditorClassIdentifier: 
   cardName: Restored Coral
-  cardType: 3
+  cardType: 4
   cardDescription: "Corail r\xE9g\xE9n\xE9r\xE9"
   cardSprite: {fileID: -1570953860, guid: a5129965d9f7c604cb1842f6662f7e07, type: 3}
   health: 0
   value: 0
   sellingPrice: 1
   isSellable: 1
-  value2: 0

@@ -14,23 +14,23 @@ public class GameManager : MonoBehaviour
     public CardPack starterPackdata;
 
     [Header("Les objEts de la scene")]
-    public GameObject button;
-    public GameObject tabDescription;
+    public GameObject buttonHide_Show;
     public GameObject timer;
     public GameObject sellPlace;
     public GameObject buyCardsPack;
     public GameObject gameOverPopup;
-    public GameObject craftZone;
     public TMP_Text gameOverComments;
     public GameObject craftPrefab;
+    public GameObject logo;
+    public GameObject tabOperations;
 
     
 
     [Header("Scripts")]
     public CardDisplay starterPackCard;
     public HeadUpDisplay headUpDisplay;
-    public CarteDescriptionUIManager tabDescri;
-    public HideTabOceanQuest tabOceanQuest;
+   
+    
 
     [Header("Paramètres des phases et quêtes")]
     public int totalPhases = 3;           // Nombre total de phases
@@ -38,19 +38,23 @@ public class GameManager : MonoBehaviour
     public int oceanLifeMax = 100;  // Vie de l'océan (point de départ)
     public int oceanActualLife;     
     public int oceanLifeGainPerPhase = 10; // Gain de vie par phase accomplie
-    public bool isPhaseDone = false;
+    //public bool isPhaseDone = false;
 
     [Header("Suivi de la progression")]
     public int currentPhase = 0;          // Phase en cours (0 = première phase)
     public int questsCompletedThisPhase = 0; // Nombre de quêtes accomplies dans la phase en cours
 
     [Header("Références (exemple)")]
-    // Si tu as des GameObjects pour tes packs, tu peux les glisser ici
+    // GameObject pakcs
     public List<GameObject> cardPackObjects;
 
+    
     public delegate void OceanLifeChanged(int newLife);
     public event OceanLifeChanged OnOceanLifeChanged;
-    public CanvasGroup interactionCanvasGroup;  
+
+    // Canvas groupe pour toutes les interactions utilisateur ( le GameObject Background)
+    public CanvasGroup interactionCanvasGroup;
+    public CanvasGroup tabDescriCanvasGroup;
 
     private void Awake()
     {
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            
         }
         else
         {
@@ -70,8 +75,8 @@ public class GameManager : MonoBehaviour
 
         StartGame(false);
         headUpDisplay.HideHUD();
-        tabDescri.HideDescri();
-        tabOceanQuest.Hidetab();
+        
+       
         oceanActualLife = Random.Range(50, 81);
         Debug.Log($"PHASE NUMERO {currentPhase + 1}");
 
@@ -89,8 +94,6 @@ public class GameManager : MonoBehaviour
         {
            StartGame(true);
            headUpDisplay.ShowHUD();
-           tabDescri.ShowDescri();
-           tabOceanQuest.Showtab();
            starterPackdata.isOpened = false;
         }
 
@@ -98,22 +101,12 @@ public class GameManager : MonoBehaviour
 
 
     //-------------------- METHODES POUR RESET FOOD CARD VALUES,  FEED HUMANS ----------------------\\  
-    private void ResetFoodCardValues()
-    {
-        CardDisplay[] foodCards = DeckManager.Instance.GetCardsOfType(CardType.Food);
-        //Debug.Log($"Nombre de cartes Food trouvées : {foodCards.Length}");
-        foreach (CardDisplay foodCard in foodCards)
-        {
-            //Debug.Log($"Réinitialisation de {foodCard.cardData.cardName} de {foodCard.cardData.value} à {foodCard.cardData.originalValue}");
-            foodCard.cardData.value = foodCard.cardData.originalValue;
-            foodCard.UpdateCardDisplay();
-        }
-    }
 
 
 // Nourrit les cartes Human en fonction des exigences en nourriture
-    public void FeedHumans()
+    public bool FeedHumans()
     {
+        bool isValidate = true;
         // Récupère toutes les cartes Human sur la table
         List<CardDisplay> humanCards = new List<CardDisplay>(DeckManager.Instance.GetCardsOfType(CardType.Human));
         // Récupère toutes les cartes Food sur la table
@@ -139,17 +132,25 @@ public class GameManager : MonoBehaviour
                     // Consomme toute la nourriture de cette carte
                     foodConsumed += foodValue;
                     foodRequired -= foodValue;
+                    //foodCard.cardData.value = foodCard.cardData.originalValue;
+                    //Debug.Log("Consomer toute la carte"+ foodCard.cardData.value);
                     foodCards.RemoveAt(0);
                     Destroy(foodCard.gameObject);
+                    
                 }
                 else
                 {
+                    //Debug.Log("Consommer partiellement la carte: ");
                     // Consomme partiellement la nourriture de cette carte
                     foodConsumed += foodRequired;
+                    //Debug.Log($"Nourriture consommer par {humanCard.cardData.cardName} : {foodConsumed}");
                     foodCard.cardData.value -= foodRequired;
+                    //Debug.Log($"Reste de la nourriture");
                     foodCard.UpdateCardDisplay();
                     foodRequired = 0;
+                    
                 }
+                DeckManager.Instance.NotifyFoodCardsUpdated();
             }
 
             if (foodRequired > 0)
@@ -164,30 +165,28 @@ public class GameManager : MonoBehaviour
                 {
                     ShowGameOverPopup("Pas assez de nourriture. Le biologiste est mort");
                     StopGame();
-                    return;
+                    return !isValidate;
                 }
             }
-        }
 
-        //// Réinitialise les valeurs des cartes Food restantes
-        foreach (CardDisplay foodCard in foodCards)
-        {
-            foodCard.cardData.value = foodCard.cardData.originalValue;
             
         }
+        return isValidate;
+
     }
 
 
     //-------------------- METHODE POUR START, STOP, GAMEOVER POP-UP----------------------\\
     private void StartGame(bool activer)
     {
-        if (button != null) button.SetActive(activer);
+        Time.timeScale = 1f; // Met le jeu en pause
+        if (buttonHide_Show != null) buttonHide_Show.SetActive(activer);
         if (sellPlace != null) sellPlace.SetActive(activer);
         if (buyCardsPack != null) buyCardsPack.SetActive(activer);
         if (timer != null) timer.SetActive(activer);
-        if(craftZone != null) craftZone.SetActive(activer);
-        ResetFoodCardValues();
-        
+        if(tabOperations != null) tabOperations.SetActive(activer);
+        if (logo != null) logo.SetActive(!activer);
+        if(tabDescriCanvasGroup != null) tabDescriCanvasGroup.alpha = activer ? 1 : 0;
     }
 
     // Affiche le pop-up "Game Over"
@@ -224,7 +223,7 @@ public class GameManager : MonoBehaviour
             questsCompletedThisPhase = 0;
             if (currentPhase > totalPhases)
             {
-                ShowGameOverPopup("VICTOIRE ! Toutes les quetes sont termines");
+                ShowGameOverPopup("VICTOIRE ! Toutes les quetes sont termines. La vie de l'ocean est de : " + oceanActualLife.ToString());
                 StopGame();
                 currentPhase = 0;
             }
@@ -232,7 +231,7 @@ public class GameManager : MonoBehaviour
             {
                 cardPackObjects[currentPhase].SetActive(true);
                 QuestManager.Instance.NextPhase();
-                cardPackObjects[currentPhase].SetActive(true);
+                //cardPackObjects[currentPhase].SetActive(true);
                 questsCompletedThisPhase = 0;
                 UpdateOceanLife(oceanLifeGainPerPhase);
             }
@@ -274,14 +273,24 @@ public class GameManager : MonoBehaviour
     {
         CardDisplay[] enemyCards = DeckManager.Instance.GetCardsOfType(CardType.Ennemy).ToArray();
         int totalValue = 0;
-        foreach(CardDisplay enemyCard in enemyCards)
+        if(enemyCards.Length == 0)
         {
-            totalValue += enemyCard.cardData.value;
+            Debug.Log("Aucune carte ennemie sur la table");
+            return;
         }
-        UpdateOceanLife(-(totalValue));
+        else
+        {
+            foreach (CardDisplay enemyCard in enemyCards)
+            {
+                totalValue += enemyCard.cardData.value;
+            }
+            UpdateOceanLife(-(totalValue));
+        }
+
     }
 
-    
+
+ 
 
 
 

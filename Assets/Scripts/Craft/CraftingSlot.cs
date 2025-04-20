@@ -4,16 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftingSlot : MonoBehaviour
 {
     public List<GameObject> cardObjectsInSlot = new List<GameObject>();
+
     public bool isInCooldown = false;
-    public GameObject cooldownObject;
-    public Image cooldownBar;
+    private int countCardInslot = 0;
     public float currentCoolDown = 0f;
     private float totalCooldownTime = 0f; // Durée totale du cooldown
+    
+    public GameObject cooldownObject;
+    public GameObject icon;
+    public GameObject nbCardInSlotObject;
 
+    public Image cooldownBar;
+    public TMP_Text nbCardInSlotText;
+    private AudioSource audioSource;
+
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if (isInCooldown)
@@ -43,19 +57,26 @@ public class CraftingSlot : MonoBehaviour
         if (cardMovement != null && cardDisplay != null && !cardMovement.isDragging && !cardMovement.hasBeenCounted)
         {
             bool humanCardPresent = cardObjectsInSlot.Exists(card => card.GetComponent<CardDisplay>().cardData.cardType == CardType.Human);
-
+            bool toolCardPresent = cardObjectsInSlot.Exists(card => card.GetComponent<CardDisplay>().cardData.cardType == CardType.ToolCrafted);
 
             if ( cardDisplay.cardData.cardType != CardType.Ennemy && 
                 cardDisplay.cardData.cardType != CardType.QuestCard &&
                 cardDisplay.cardData.cardType != CardType.Idea &&
                 cardDisplay.cardData.cardType != CardType.Food &&
                 cardDisplay.cardData.cardType != CardType.Coin &&
-                (!humanCardPresent || cardDisplay.cardData.cardType != CardType.Human)) 
+                (!humanCardPresent || cardDisplay.cardData.cardType != CardType.Human) &&
+                (!toolCardPresent || cardDisplay.cardData.cardType != CardType.ToolCrafted)) 
             {
+
+                // Sert a compter le nombre de carte dans le slot
+                countCardInslot++;
+                nbCardInSlotText.text = countCardInslot.ToString();
+                icon.SetActive(false);
+                nbCardInSlotObject.SetActive(true);
 
                 Debug.Log("Card added to slot: " + cardDisplay.cardData.cardName);
                 cardObjectsInSlot.Add(collision.gameObject);
-                cardMovement.hasBeenCounted = true;
+                
                 
 
                 if (cardDisplay.cardData.cardType == CardType.Human)
@@ -64,6 +85,7 @@ public class CraftingSlot : MonoBehaviour
 
                     // Déplacer la carte humaine hors de la vue
                     collision.transform.position = new Vector3(-1000, -1000, 0);
+                    cardMovement.hasBeenCounted = false;
                 }
                 else
                 {
@@ -77,6 +99,13 @@ public class CraftingSlot : MonoBehaviour
     public void Craft() {
         if (cardObjectsInSlot != null)
         {
+            // Remettre l'etat visuel d'orginie du slot
+            nbCardInSlotObject.SetActive(false);
+            icon.SetActive(true);
+            countCardInslot = 0;
+            nbCardInSlotText.text = countCardInslot.ToString();
+
+            audioSource.Play();
             CraftManager.Instance.Craft(this);
         }
         else return;

@@ -8,11 +8,11 @@ public class CarteDescriptionUIManager : MonoBehaviour
 {
     
     // Références aux composants Text de la section
-    public TMP_Text nomText;
-    [SerializeField] private CanvasGroup descriCanvasGroup;
-    public TMP_Text descriptionText;
+    public TMP_Text nomText; // nom de la carte
+    public TMP_Text descriptionText; // description de la carte
 
-    
+
+
     private void Start()
     {
        
@@ -22,6 +22,9 @@ public class CarteDescriptionUIManager : MonoBehaviour
     // Met à jour le contenu de la section de description
     public void UpdateDescription(string nom,  string description)
     {
+
+        
+
         if (nomText != null)
             nomText.text = nom;
 
@@ -32,6 +35,9 @@ public class CarteDescriptionUIManager : MonoBehaviour
     // Efface le contenu de la section
     public void ClearDescription()
     {
+
+        
+
         if (nomText != null)
             nomText.text = "";
 
@@ -50,16 +56,4 @@ public class CarteDescriptionUIManager : MonoBehaviour
         }
     }
 
-    public void HideDescri()
-    {
-        descriCanvasGroup.alpha = 0f; // Rendre invisible
-        descriCanvasGroup.blocksRaycasts = false; // Désactiver les interactions
-    }
-
-    // Appeler cette méthode pour afficher le HUD
-    public void ShowDescri()
-    {
-        descriCanvasGroup.alpha = 1f; // Rendre visible
-        descriCanvasGroup.blocksRaycasts = true; // Activer les interactions
-    }
 }

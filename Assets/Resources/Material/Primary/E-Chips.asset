@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: E-Chips
   m_EditorClassIdentifier: 
   cardName: E-Chips
-  cardType: 3
+  cardType: 4
   cardDescription: Circuits recycles pour outils high tech
   cardSprite: {fileID: -1570953860, guid: a5129965d9f7c604cb1842f6662f7e07, type: 3}
   health: 0
   value: 0
   sellingPrice: 2
   isSellable: 1
-  value2: 0

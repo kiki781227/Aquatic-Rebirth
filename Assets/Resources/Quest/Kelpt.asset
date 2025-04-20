@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: Kelpt
   cardType: 9
   cardDescription: "Plantation de for\xEAts de kelp (algues g\xE9antes) qui absorbent
-    le CO\u2082, favorisent la biodiversit\xE9 marine et am\xE9liorent la qualit\xE9
-    de l\u2019eau en filtrant les polluants."
+    le CO2, favorisent la biodiversit\xE9 marine et am\xE9liorent la qualit\xE9 de
+    l\u2019eau en filtrant les polluants."
   cardSprite: {fileID: 21300000, guid: 85847f1447e79ec48868a49735a123f6, type: 3}
   health: 0
   value: 0
+  originalValue: 0
   sellingPrice: 2
   isSellable: 1

@@ -12,6 +12,7 @@ namespace CardPackData
 
         public int toReveal = 5;
         public bool isOpened = false;
+        public bool isStarterPack = false;
     }
 
 }
