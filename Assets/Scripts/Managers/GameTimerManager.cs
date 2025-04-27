@@ -7,8 +7,10 @@ using UnityEngine.EventSystems;
 
 public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+  
+
     [Header("Donnee typee")]
-    private float dayDuration = 20f;
+    private float dayDuration = 60*5f;
     private float currentTimer;
     private int currentDay = 1;
     private bool isPaused = false; // Gère l'état de pause
@@ -39,12 +41,11 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject craftZone;
     public GameObject pauseTxt;
     public GameObject buyplace;
-    
+
 
 
     void Start()
     {
-
         audioSource = GetComponent<AudioSource>();
         Debug.Log("Start est appele");
         currentTimer = dayDuration;

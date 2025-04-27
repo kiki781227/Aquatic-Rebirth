@@ -10,6 +10,7 @@ public class CarteDescriptionUIManager : MonoBehaviour
     // Références aux composants Text de la section
     public TMP_Text nomText; // nom de la carte
     public TMP_Text descriptionText; // description de la carte
+   
 
 
 

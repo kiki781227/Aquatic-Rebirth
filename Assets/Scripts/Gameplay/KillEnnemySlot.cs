@@ -12,9 +12,11 @@ public class KillEnnemySlot : MonoBehaviour
     public GameObject cooldownObject;
     public GameObject icon;
     public GameObject nbCardInSlotObject;
+    public GameObject txtNeutralisation;
 
     public Image cooldownBar;
     public TMP_Text nbCardInSlotText;
+    
 
     private bool isInCooldown = false;
     private int countCardInslot = 0;
@@ -34,6 +36,7 @@ public class KillEnnemySlot : MonoBehaviour
                 isInCooldown = false;
                 currentCoolDown = 0f;
                 cooldownObject.SetActive(false);
+                txtNeutralisation.SetActive(false);
 
                 // Détruire la carte Ennemy et respawn la carte Human
                 HandleCooldownCompletion();
@@ -84,6 +87,7 @@ public class KillEnnemySlot : MonoBehaviour
             if (enemyCardPresent && humanCardPresent && !isInCooldown)
             {
                 StartCooldown(6f); 
+                txtNeutralisation.SetActive(true);
             }
         }
     }

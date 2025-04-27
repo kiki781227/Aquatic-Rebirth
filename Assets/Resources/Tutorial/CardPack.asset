@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2f8f340d856e4f89c01ae48ad04a2, type: 3}
+  m_Name: CardPack
+  m_EditorClassIdentifier: 
+  tutorialName: CardPack
+  pages:
+  - title: Achat
+    text: "<b>Bravo</b>, vous venez d\u2019ouvrir votre <b>tout premier pack de cartes</b>
+      !\r\n\r\nChaque pack contient <b>5 cartes</b> qui peuvent inclure des <b>ressources</b>,
+      ou d\u2019autres \xE9l\xE9ments pour <b>avancer dans le jeu</b>.\r\n\r\nPour
+      obtenir de <b>nouveaux packs</b>, acc\xE9dez \xE0 la <b>boutique</b> en haut
+      \xE0 gauche de l\u2019\xE9cran.\r\n\r\n<i>Faites simplement glisser</i> les
+      <b>coins n\xE9cessaires</b> sur le pack souhait\xE9 pour l\u2019acheter.\r\n"
+    image: {fileID: 0}
+    video: {fileID: 32900000, guid: 6580cc14762e2c1408f8c76e86b774c2, type: 3}
+    highlightObject: {fileID: 0}
+  - title: Slot de vente
+    text: "<b>Comment obtenir des coins ?</b>\r\n\r\nPour <b>gagner des coins</b>,
+      vous devrez <b>vendre des cartes</b> dont vous n\u2019avez pas besoin.  \r\n<i>Glissez
+      simplement</i> la carte souhait\xE9e dans le <b>slot de vente</b>, situ\xE9
+      juste \xE0 gauche de la <b>boutique</b>.\r\n\r\nChaque carte vendue vous rapportera
+      des <b>coins</b>, que vous pourrez ensuite utiliser pour <b>acheter de nouveaux
+      packs</b> et <b>continuer \xE0 progresser</b> dans le jeu.\r\n"
+    image: {fileID: 0}
+    video: {fileID: 32900000, guid: 57e34ed23c973b443b79726fb10889fb, type: 3}
+    highlightObject: {fileID: 0}
+  - title: Prix d'une carte
+    text: "<b>Toutes les cartes ne sont pas vendables.</b>\r\n\r\nCertaines cartes
+      peuvent \xEAtre <b>\xE9chang\xE9es contre des coins</b>, d\u2019autres non.\r\n\r\nPour
+      savoir si une carte est <b>vendable</b>, regardez-en bas de la carte :  \r\n\u2022
+      Si vous voyez une <b>ic\xF4ne de diamant</b> avec un <b>prix affich\xE9</b>,
+      cela signifie qu\u2019elle est <b>vendable</b> \r\n\r\n\u2022 Si aucune ic\xF4ne
+      n\u2019appara\xEEt, la carte <b>ne peut pas \xEAtre vendue</b>.\r\n"
+    image: {fileID: 21300000, guid: d0f24a80a59777947b66c8f71f7070fe, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  - title: Recap
+    text: "<b>En r\xE9sum\xE9</b> :  \r\n\r\nPour progresser dans le jeu, vous aurez
+      besoin d\u2019<b>acheter des packs</b>.  \r\n\r\nCes packs contiennent les
+      <b>ressources n\xE9cessaires</b> pour accomplir les <b>qu\xEAtes</b> disponibles
+      dans votre <b>laboratoire</b>.\r\n\r\nEn terminant ces <b>qu\xEAtes</b>, vous
+      contribuerez \xE0 <b>sauver l\u2019oc\xE9an</b> et <b>restaurer l\u2019\xE9quilibre
+      de son \xE9cosyst\xE8me</b>.\r\n"
+    image: {fileID: 21300000, guid: fd72fd4534532954eb25e0594a2f166f, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  triggerAutomatically: 0
+  triggerAction: CardPack

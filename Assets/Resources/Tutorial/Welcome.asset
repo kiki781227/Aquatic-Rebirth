@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2f8f340d856e4f89c01ae48ad04a2, type: 3}
+  m_Name: Welcome
+  m_EditorClassIdentifier: 
+  tutorialName: Welcome
+  pages:
+  - title: Welcome
+    text: "<b>Bienvenue dans Aquatic Rebirth.</b>\r\n\r\nL\u2019oc\xE9an est en danger,
+      les <b>\xE9cosyst\xE8mes marins</b> s\u2019\xE9teignent peu \xE0 peu sous l\u2019effet
+      de l\u2019<b>activit\xE9 humaine</b>.  \r\nVotre mission : incarner un <b>biologiste</b>
+      d\xE9termin\xE9 \xE0 <b>restaurer la vie sous-marine</b>.\r\n\r\nPour y parvenir,
+      vous devrez accomplir des <b>qu\xEAtes</b> qui vous demanderont de <b>crafter</b>
+      des outils (<b>OceanQuest Card</b>) pour <b>prot\xE9ger l\u2019oc\xE9an</b>
+      et <b>neutraliser les menaces</b> \u2014 le tout depuis votre <b>laboratoire</b>.\r\n\r\n<color=#FF6363><b>Mais
+      soyez vigilant :</b></color> chaque <color=#FF6363><b>jour</b></color> qui
+      passe vous rapprochera du <color=#FF6363><b>d\xE9fi de survivre</b></color>
+      dans cet environnement en crise.\r\n"
+    image: {fileID: 21300000, guid: fd72fd4534532954eb25e0594a2f166f, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  triggerAutomatically: 1
+  triggerAction: 

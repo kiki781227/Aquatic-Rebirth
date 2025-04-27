@@ -144,7 +144,7 @@ public class CardPackReaveler : MonoBehaviour, IPointerDownHandler
         if (revealedCount >= cardPack.toReveal)
         {
             cardPack.isOpened = true;
-            Destroy(gameObject);        
+            Destroy(gameObject);     
         }
             
         isRevealing =false;

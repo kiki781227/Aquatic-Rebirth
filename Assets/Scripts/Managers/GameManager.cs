@@ -19,12 +19,18 @@ public class GameManager : MonoBehaviour
     public GameObject sellPlace;
     public GameObject buyCardsPack;
     public GameObject gameOverPopup;
-    public TMP_Text gameOverComments;
     public GameObject craftPrefab;
     public GameObject logo;
     public GameObject tabOperations;
 
+
+    [Header("Element UI")]
+    public TMP_Text gameOverComments;
+    public TMP_Text phaseTxt;
+    public CanvasGroup interactionCanvasGroup;  // Canvas groupe pour toutes les interactions utilisateur ( le GameObject Background)
+    public CanvasGroup tabDescriCanvasGroup;
     
+
 
     [Header("Scripts")]
     public CardDisplay starterPackCard;
@@ -52,9 +58,8 @@ public class GameManager : MonoBehaviour
     public delegate void OceanLifeChanged(int newLife);
     public event OceanLifeChanged OnOceanLifeChanged;
 
-    // Canvas groupe pour toutes les interactions utilisateur ( le GameObject Background)
-    public CanvasGroup interactionCanvasGroup;
-    public CanvasGroup tabDescriCanvasGroup;
+   
+ 
 
     private void Awake()
     {
@@ -84,6 +89,7 @@ public class GameManager : MonoBehaviour
         if (starterPackCard != null)
         {
             starterPackdata = starterPackCard.cardData as CardPack;
+            starterPackdata.isOpened = false;
             if (starterPackdata == null) Debug.LogError("Le CardData n'est pas un CardPack !");
         }
     }
@@ -92,9 +98,12 @@ public class GameManager : MonoBehaviour
     {
         if (starterPackdata != null && starterPackdata.isOpened)
         {
+           
            StartGame(true);
-           headUpDisplay.ShowHUD();
-           starterPackdata.isOpened = false;
+           TutorialManager.Instance.TriggerTutorial("CardPack");
+            starterPackdata.isOpened = false;
+            headUpDisplay.ShowHUD();
+           
         }
 
     }
@@ -187,6 +196,8 @@ public class GameManager : MonoBehaviour
         if(tabOperations != null) tabOperations.SetActive(activer);
         if (logo != null) logo.SetActive(!activer);
         if(tabDescriCanvasGroup != null) tabDescriCanvasGroup.alpha = activer ? 1 : 0;
+
+        if(activer) phaseTxt.text = "Phase " + (currentPhase + 1).ToString();
     }
 
     // Affiche le pop-up "Game Over"
@@ -220,6 +231,7 @@ public class GameManager : MonoBehaviour
             currentPhase++;
             Debug.Log(currentPhase);
             Debug.Log($"PHASE NUMERO {currentPhase + 1}");
+            phaseTxt.text = "Phase " + (currentPhase + 1).ToString();
             questsCompletedThisPhase = 0;
             if (currentPhase > totalPhases)
             {

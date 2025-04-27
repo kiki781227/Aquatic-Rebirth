@@ -72,3 +72,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 [Aa]ssets[Ss]treamingAssetsaa.meta
 [Aa]ssets[Ss]treamingAssetsaa
+
+# ───────────────────────────────
+# Unity In-Editor Tutorial (IET) Framework
+# ───────────────────────────────
+
+# Fichier utilisé pour déclencher le tutoriel au premier lancement
+InitCodeMarker
+
+# Dossier de backup automatique créé par le framework IET
+/Tutorial Defaults/
