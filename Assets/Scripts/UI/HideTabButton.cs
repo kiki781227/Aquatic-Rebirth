@@ -11,7 +11,7 @@ public class TabHide : MonoBehaviour
     public CanvasGroup tabDescriCanvasGroup;
     private AudioSource audioSource;
 
-    private bool isTutorialTriggered = false; // Booléen pour suivre si 
+    private bool isTutorialTriggered = false;
 
 
 

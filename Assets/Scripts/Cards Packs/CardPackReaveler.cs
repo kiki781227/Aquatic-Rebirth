@@ -80,35 +80,35 @@ public class CardPackReaveler : MonoBehaviour, IPointerDownHandler
             return;
         }
 
-        Card selectedCard;
+        Card selectedCard = cardPack.containedCard[revealedCount];
 
-        // Vérification si c'est un StarterPack
-        if (cardPack.isStarterPack)
-        {
-            // Révélation ordonnée pour les StarterPacks
-            selectedCard = cardPack.containedCard[revealedCount];
-        }
-        else
-        {
+        //// Vérification si c'est un StarterPack
+        //if (cardPack.isStarterPack)
+        //{
+        //    // Révélation ordonnée pour les StarterPacks
+        //    selectedCard = cardPack.containedCard[revealedCount];
+        //}
+        //else
+        //{
             
-            List<Card> availableCards = new List<Card>(cardPack.containedCard);
+        //    List<Card> availableCards = new List<Card>(cardPack.containedCard);
 
-            if (humanCardGenerated)
-            {
-                // Exclure les cartes de type Human si une carte Human a déjà été générée
-                availableCards.RemoveAll(card => card.cardType == CardType.Human);
-            }
+        //    if (humanCardGenerated)
+        //    {
+        //        // Exclure les cartes de type Human si une carte Human a déjà été générée
+        //        availableCards.RemoveAll(card => card.cardType == CardType.Human);
+        //    }
 
-            // Générer une carte aléatoire parmi les cartes disponibles
-            int cardIndex = Random.Range(0, availableCards.Count);
-            selectedCard = availableCards[cardIndex];
+        //    // Générer une carte aléatoire parmi les cartes disponibles
+        //    int cardIndex = Random.Range(0, availableCards.Count);
+        //    selectedCard = availableCards[cardIndex];
 
-            // Vérifier si la carte générée est de type Human
-            if (selectedCard.cardType == CardType.Human)
-            {
-                humanCardGenerated = true; // Marquer qu'une carte Human a été générée
-            }
-        }
+        //    // Vérifier si la carte générée est de type Human
+        //    if (selectedCard.cardType == CardType.Human)
+        //    {
+        //        humanCardGenerated = true; // Marquer qu'une carte Human a été générée
+        //    }
+        //}
 
         // Création de la carte
         GameObject newCard = Instantiate(

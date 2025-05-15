@@ -48,7 +48,7 @@ MonoBehaviour:
     text: "<b>En r\xE9sum\xE9</b> :  \r\n\r\nPour progresser dans le jeu, vous aurez
       besoin d\u2019<b>acheter des packs</b>.  \r\n\r\nCes packs contiennent les
       <b>ressources n\xE9cessaires</b> pour accomplir les <b>qu\xEAtes</b> disponibles
-      dans votre <b>laboratoire</b>.\r\n\r\nEn terminant ces <b>qu\xEAtes</b>, vous
+      dans votre <b>LABORATOIRE</b>.\r\n\r\nEn terminant ces <b>qu\xEAtes</b>, vous
       contribuerez \xE0 <b>sauver l\u2019oc\xE9an</b> et <b>restaurer l\u2019\xE9quilibre
       de son \xE9cosyst\xE8me</b>.\r\n"
     image: {fileID: 21300000, guid: fd72fd4534532954eb25e0594a2f166f, type: 3}

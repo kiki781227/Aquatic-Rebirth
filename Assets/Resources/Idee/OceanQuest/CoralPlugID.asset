@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Coral Plug
   cardType: 10
-  cardDescription: Restored Coral + Sea Glass
+  cardDescription: 'Restored Coral + Plastic Wate
+
+'
   cardSprite: {fileID: 0}
   health: 0
-  value: 2
+  value: 1
   sellingPrice: 0
   isSellable: 0

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2f8f340d856e4f89c01ae48ad04a2, type: 3}
+  m_Name: Timer_Survival
+  m_EditorClassIdentifier: 
+  tutorialName: Timer_Survival
+  pages:
+  - title: Le timer
+    text: "Le <b>timer</b> repr\xE9sente une journ\xE9e dans le jeu, soit <b>4 minutes</b>.\nVous
+      pouvez mettre le jeu en pause en cliquant sur le bouton pause du <b>timer</b>."
+    image: {fileID: 21300000, guid: 92fab5a676f21ac4a85aa71053605606, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  - title: Fin de journee
+    text: "<b>Fin de journ\xE9e : il est temps de nourrir vos humains.</b>\n\xC0
+      la fin de chaque cycle, le <b>timer</b> s\u2019arr\xEAte et un bouton <b>\xAB
+      Nourrir \xBB</b> appara\xEEt \xE0 l\u2019\xE9cran.\nCliquez dessus pour alimenter
+      vos cartes de type <b>Human</b>.\n\nSi vous avez assez de <b>nourriture</b>
+      (visible sur le <b>HUD</b>), la journ\xE9e se termine normalement et vous passez
+      au jour suivant.\n<b><color=#FF5555>Attention :</color></b> si vous manquez
+      de nourriture, une carte <b>Human</b> meurt...\n<b><color=#FF5555>Et si votre
+      biologiste dispara\xEEt, la partie est termin\xE9e.</color></b>"
+    image: {fileID: 21300000, guid: 4fead93d3001c734690e7faebd10b9d0, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  - title: Carte Food
+    text: "Sur chaque carte de type <b>Aliment</b>, une <b>valeur nutritive</b> est
+      indiqu\xE9e \u2014 repr\xE9sent\xE9e par un chiffre entour\xE9 d'un coeur.\n\nCette
+      valeur correspond au nombre total de <b>points nutritifs</b> que la carte peut
+      fournir.\n\xC0 chaque consommation, cette valeur <b>diminue</b>.\n\nLe <b>biologiste</b>
+      a besoin de <b>2 points</b> de valeur nutritive.\n\n\n<b><color=#FF5555>Attention
+      :</color></b> g\xE9rez vos ressources avec soin : un bon \xE9quilibre entre
+      <b>collecte</b> et <b>nutrition</b> est essentiel pour assurer la <b>survie</b>
+      de votre \xE9quipe."
+    image: {fileID: 21300000, guid: 17868f65763394547833039c845b1439, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  - title: Recap
+    text: "<b>En r\xE9sum\xE9 :</b>\nVous devez toujours veiller \xE0 avoir suffisamment
+      de <b>nourriture</b> sur la table pour nourrir votre <b>biologiste</b> et continuer
+      \xE0 jouer.\n\n<b>Maintenant, \xE0 vous de jouer :</b> <b>sauvez l\u2019oc\xE9an</b>,
+      <b>survivez</b>... et <b>gagnez la partie</b> !"
+    image: {fileID: 21300000, guid: fd72fd4534532954eb25e0594a2f166f, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  triggerAction: Timer

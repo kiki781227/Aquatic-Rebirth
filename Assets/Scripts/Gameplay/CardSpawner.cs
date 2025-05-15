@@ -115,7 +115,7 @@ public class CardSpawner : MonoBehaviour
 
         cardCount++;
 
-        if (cardCount >= 8) { 
+        if (cardCount >= 10) { 
             cardCount = 0;
         }
         return new Vector2(xPosition, yPosition);

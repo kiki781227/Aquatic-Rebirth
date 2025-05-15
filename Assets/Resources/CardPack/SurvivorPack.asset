@@ -18,16 +18,14 @@ MonoBehaviour:
   cardSprite: {fileID: 0}
   health: 0
   value: 3
-  originalValue: 3
   sellingPrice: 0
   isSellable: 0
   containedCard:
-  - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
+  - {fileID: 11400000, guid: 8e839a315acfffe47b7211348328e228, type: 2}
   - {fileID: 11400000, guid: 1bbaea10326d672469039c1e08d69516, type: 2}
   - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
   - {fileID: 11400000, guid: 2897bdec3d403f448a6305649cd2566b, type: 2}
-  - {fileID: 11400000, guid: d8375fb8932ea5a4bae66d9be0c9292f, type: 2}
-  - {fileID: 11400000, guid: c45297b0b75e24547a706a6b685e6c8a, type: 2}
+  - {fileID: 11400000, guid: 958566cad851798489f4948f1697cf67, type: 2}
   toReveal: 5
   isOpened: 1
   isStarterPack: 0

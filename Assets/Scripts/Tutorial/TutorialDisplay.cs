@@ -86,12 +86,6 @@ public class TutorialDisplay : MonoBehaviour
         }
     }
 
-    
-    //public void UpdatePanelPosition(Vector3 position)
-    //{
-    //    // Applique la position au panneau
-    //    tutorialUIPanel.transform.localPosition = position;
-    //}
 
     private void SetCanvasGroupVisibility(CanvasGroup canvasGroup, bool isVisible)
     {

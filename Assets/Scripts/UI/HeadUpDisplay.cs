@@ -10,7 +10,7 @@ public class HeadUpDisplay : MonoBehaviour
     private int nbfoodRequired = 0;
     [SerializeField] private TMP_Text coinText;
     [SerializeField] private TMP_Text cardOnTableTxt;
-    private int maxCardOnTable = 10;
+    private int maxCardOnTable = 12;
     [SerializeField] private TMP_Text oceanHealth;
 
     private int oceanMaxHealth;

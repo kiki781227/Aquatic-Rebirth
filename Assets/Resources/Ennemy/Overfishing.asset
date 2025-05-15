@@ -17,7 +17,7 @@ MonoBehaviour:
   cardDescription: "Des chalutiers tra\xEEnent leurs filets, capturant des poissons
     en exc\xE8s, bien au-del\xE0 des limites durables. La mer se vide lentement,
     les stocks de poissons s\u2019\xE9puisent, mena\xE7ant l'\xE9quilibre \xE9cologique
-    et l'avenir des \xE9cosyst\xE8mes marins."
+    et l'avenir des \xE9cosyst\xE8mes marins.\n\nD\xE9gat sur l'o\xE9can : 5"
   cardSprite: {fileID: 21300000, guid: 0c998fb542b1287408fb56e43f9ef932, type: 3}
   health: 7
   value: 5

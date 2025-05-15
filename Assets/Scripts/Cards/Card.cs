@@ -11,7 +11,10 @@ namespace CardData
 
         public string cardName;
         public CardType cardType;
+
+        [TextArea(10, 10)]
         public string cardDescription;
+
         public Sprite cardSprite;
         public int health;
         public int value = 0;
@@ -19,14 +22,7 @@ namespace CardData
         public int sellingPrice = 0;
         public bool isSellable = false;
 
-        // En lien avec la fonctionnalite feedHumans
-        //private void OnEnable()
-        //{
-        //    if (originalValue == 0) // Initialisez la valeur d'origine uniquement si elle n'a pas été initialisée
-        //    {
-        //        originalValue = value;
-        //    }
-        //}
+
 
     }
 

@@ -13,21 +13,19 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Tutoriels disponibles")]
     public List<TutorialData> tutorials; // Liste des tutoriels disponibles
+    private List<TutorialPage> allTutorialPages = new List<TutorialPage>(); // Liste de toutes les pages des tutoriels
+
 
     [Header("Références")]
     public TutorialDisplay tutorialDisplay; // Référence au gestionnaire d'affichage
 
-    private Queue<TutorialData> tutorialQueue = new Queue<TutorialData>(); // File d'attente des tutoriels automatiques
     private int currentPageIndex = 0;
     private TutorialData currentTutorial;
     private bool isTutorialRunning = false; // Indique si un tutoriel est en cours
 
-    public GameObject timer;
-    public GameObject laboratoryPanel;
-    public GameObject tabDescription;
-    public GameObject laboratoryBtn;
-    public CanvasGroup bckgrndOverlay;
-   
+    public GameObject bckgrndOverlayTuto;
+
+ 
 
     private void Awake()
     {
@@ -43,45 +41,12 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        // Ajouter les tutoriels automatiques à la file d'attente
-        foreach (var tutorial in tutorials)
-        {
-            if (tutorial.triggerAutomatically)
-            {
-                tutorialQueue.Enqueue(tutorial);
-            }
-        }
-
-        // Démarrer le premier tutoriel automatique
-        StartNextTutorial();
+        TriggerTutorial("Welcome"); // Démarre le tutoriel de bienvenue
     }
 
-    private void StartNextTutorial()
-    {
-        if (tutorialQueue.Count > 0)
-        {
-            var nextTutorial = tutorialQueue.Dequeue();
-            StartTutorial(nextTutorial);
-        }
-        else
-        {
-            Debug.Log("Tous les tutoriels automatiques sont terminés.");
-            isTutorialRunning = false;
-        }
-    }
 
     public void StartTutorial(TutorialData tutorial)
     {
-
-        if (tutorial.tutorialName != "Welcome")
-        {
-            timer.SetActive(false);
-            laboratoryPanel.SetActive(false);
-            tabDescription.SetActive(false);
-            laboratoryBtn.SetActive(false);
-            bckgrndOverlay.alpha = 1;
-        }        
-
 
         if (tutorial == null || tutorial.pages == null || tutorial.pages.Count == 0)
         {
@@ -89,14 +54,13 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-
-
         currentTutorial = tutorial;
         currentPageIndex = 0;
         isTutorialRunning = true; // Indique qu'un tutoriel est en cours
 
-        // Applique la position du panneau
-        //tutorialDisplay.UpdatePanelPosition(tutorial.panelPosition);
+        bckgrndOverlayTuto.SetActive(true);
+        Time.timeScale = 0;
+
 
         tutorialDisplay.tutorialUIPanel.SetActive(true); // Affiche le panneau du tutoriel
         ShowPage(currentPageIndex);
@@ -144,23 +108,14 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void EndTutorial()
-    {
-        if (currentTutorial.tutorialName != "Welcome")
-        {
-            timer.SetActive(true);
-            laboratoryPanel.SetActive(true);
-            tabDescription.SetActive(true);
-            laboratoryBtn.SetActive(true); 
-            bckgrndOverlay.alpha = 0; 
-        }
-
+    {    
+        bckgrndOverlayTuto.SetActive(false);
+        Time.timeScale = 1;
         currentTutorial = null;
         currentPageIndex = 0;
         tutorialDisplay.tutorialUIPanel.SetActive(false); // Masque le panneau du tutoriel
         isTutorialRunning = false;
 
-        // Passe au tutoriel suivant dans la file d'attente
-        StartNextTutorial();
     }
 
 

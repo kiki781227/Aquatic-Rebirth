@@ -22,9 +22,9 @@ MonoBehaviour:
   isSellable: 0
   containedCard:
   - {fileID: 11400000, guid: 61c00d7e78434a94d80d24c82de5ae58, type: 2}
-  - {fileID: 11400000, guid: 387c3f5f0d5ce6e4dafe9c2bd27a2035, type: 2}
-  - {fileID: 11400000, guid: 11a0d00b8bba03f4fadf0977586af0ab, type: 2}
   - {fileID: 11400000, guid: 51f680ed4a8bfc1449b9e0d2aac2f947, type: 2}
+  - {fileID: 11400000, guid: 11a0d00b8bba03f4fadf0977586af0ab, type: 2}
+  - {fileID: 11400000, guid: 61c00d7e78434a94d80d24c82de5ae58, type: 2}
   - {fileID: 11400000, guid: e9e28c52af2b82d47a4e55827c683cd1, type: 2}
   toReveal: 5
   isOpened: 0

@@ -12,23 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea2f8f340d856e4f89c01ae48ad04a2, type: 3}
   m_Name: Laboratory
   m_EditorClassIdentifier: 
-  tutorialName: Laboratoire
+  tutorialName: Laboratory
   pages:
-  - title: OceanQuest
-    text: "Dans le <b>laboratoire</b>, votre mission se d\xE9roule en <b>4 phases
-      de qu\xEAtes</b>.  \r\nChaque phase comporte <b>4 qu\xEAtes \xE0 compl\xE9ter</b>.\r\n\r\nVotre
-      objectif : <b>crafter des outils</b> appel\xE9s <b>OceanQuest Cards</b>, inspir\xE9s
-      de <b>solutions r\xE9elles</b>, pour <b>pr\xE9server et prot\xE9ger l\u2019oc\xE9an</b>. 
-      \r\nCes outils sont cr\xE9\xE9s \xE0 partir de <b>ressources polluantes mais
-      recyclables</b>, elles aussi bas\xE9es sur des \xE9l\xE9ments du <b>monde r\xE9el</b>.\r\n\r\n\xC0
-      chaque phase termin\xE9e, la <b>vie de l\u2019oc\xE9an augmente</b>...  \r\n<b>Mais
-      attention :</b> l\u2019<b><color=#FF5555>oc\xE9an perd un point de vie chaque
-      jour</b></color>. Il faudra avancer efficacement pour esp\xE9rer le sauver.\r\n"
+  - title: Structure
+    text: "Le laboratoire est compos\xE9 de <b>3 onglets principaux</b> ainsi que
+      d\u2019un <b>panneau de description</b> :\n\r\n<b>- Quest :</b> Contient toutes
+      les <b>qu\xEAtes</b> que le joueur doit r\xE9aliser pour <b>finir le jeu</b>.\n\r\n<b>-
+      Craft :</b> Contient <b>4 slots</b> permettant de <b>crafter des outils</b>
+      n\xE9cessaires \xE0 la <b>survie</b> ou \xE0 la <b>r\xE9alisation des qu\xEAtes</b>.\n\r\n<b>-
+      Kill :</b> Contient une <b>zone de neutralisation</b> pour \xE9liminer les
+      <b>ennemis</b> qui infligent des <b>d\xE9g\xE2ts</b> \xE0 la vie de l\u2019oc\xE9an.\n\r\n<b>-
+      Panneau de Description :</b> Affiche la <b>description des cartes</b> ou explique
+      comment <b>r\xE9aliser les qu\xEAtes</b>.\r\n"
+    image: {fileID: 21300000, guid: 8fd6adb8baeeada42a2c194007008fb4, type: 3}
+    video: {fileID: 0}
+    highlightObject: {fileID: 0}
+  - title: Quest
+    text: "Dans l'onglet <b>Quest</b>, votre mission se d\xE9roule en <b>4 phases
+      de qu\xEAtes</b>.\r\nChaque phase comporte <b>4 qu\xEAtes \xE0 compl\xE9ter</b>,
+      chacune repr\xE9sent\xE9e par un slot capable d\u2019accueillir un certain
+      nombre de cartes de type OCEANQUEST.\n\r\nVotre objectif : <b>crafter des outils</b>
+      appel\xE9s <b>OceanQuest Cards</b>, inspir\xE9s de <b>solutions r\xE9elles</b>,
+      pour <b>pr\xE9server et prot\xE9ger l\u2019oc\xE9an</b>.\r\nCes outils peuvent
+      \xEAtre cr\xE9\xE9s \xE0 partir de <b>ressources polluantes mais recyclables</b>,
+      elles aussi bas\xE9es sur des \xE9l\xE9ments du <b>monde r\xE9el</b>.\n\r\n\xC0
+      chaque phase termin\xE9e, la <b>vie de l\u2019oc\xE9an augmente...</b> \r\n<b>Mais
+      attention :</b> <color=#FF5555><b>l'oc\xE9an perd un point de vie chaque jour</b></color>
+      (<b>Visible sur le HUD</b>). Il faudra avancer efficacement pour esp\xE9rer
+      le sauver.\r\n"
     image: {fileID: 21300000, guid: b944d4c5eaaf05240b1c277c86552158, type: 3}
     video: {fileID: 0}
     highlightObject: {fileID: 0}
   - title: OceanQuest Card
-    text: "<b>Cr\xE9er un OceanQuest Card, c\u2019est tr\xE8s simple.</b>  \n\r\nPour
+    text: "<b>Crafter un OceanQuest Card, c\u2019est tr\xE8s simple.</b>  \r\n\r\nPour
       savoir quelles cartes sont n\xE9cessaires, il vous suffit de <b>passer le curseur</b>
       sur la qu\xEAte que vous souhaitez r\xE9aliser.  \r\nUne <b>formule de craft</b>
       s\u2019affichera automatiquement dans le <b>panneau de description</b>.  \r\n\r\nPar
@@ -38,8 +54,8 @@ MonoBehaviour:
     image: {fileID: 0}
     video: {fileID: 32900000, guid: 24fd9e39a5aaf464b9c0ea7e986189f5, type: 3}
     highlightObject: {fileID: 0}
-  - title: 'Craft '
-    text: "<b>Comme vous l\u2019avez devin\xE9, c\u2019est ici que se passe le crafting.</b> 
+  - title: Craft
+    text: "<b>Comme vous l\u2019avez devin\xE9, c\u2019est ici que se passe le crafting.</b>\n 
       \r\nPour cr\xE9er un outil, glissez simplement les <b>cartes n\xE9cessaires</b>
       dans l\u2019un des <b>4 slots disponibles</b> \u2014 vous pouvez donc lancer
       jusqu\u2019\xE0 <b>4 crafts en m\xEAme temps</b> !\r\n\r\n<b><color=#FF5555>Chaque
@@ -47,13 +63,12 @@ MonoBehaviour:
       (comme <b>Biologiste</b> ou <b>Assistant</b>) pour que le craft fonctionne. 
       \r\n\r\nUne fois les cartes en place, appuyez sur le bouton <b>\"Crafter\"</b>. 
       \r\nPatientez un court instant\u2026 et <b>bam</b>, votre <b>carte craft\xE9e</b>
-      appara\xEEt sur la table, aux c\xF4t\xE9s de votre <b>carte Human</b> pr\xEAte
-      \xE0 repartir en mission !\r\n"
+      appara\xEEt sur la "
     image: {fileID: 0}
     video: {fileID: 32900000, guid: db17419e6bfa6cc4d9ff6fbec61b746b, type: 3}
     highlightObject: {fileID: 0}
-  - title: Kill slot
-    text: "<b>Et enfin, le slot de neutralisation : le Kill Slot.</b>  \r\nCe slot
+  - title: Kill Slot
+    text: "<b>Et enfin, le slot de neutralisation : le Kill Slot.</b>\n  \r\nCe slot
       est r\xE9serv\xE9 \xE0 la <b>neutralisation des cartes</b> <b>ennemies</b>,
       qui infligent des <b>d\xE9g\xE2ts suppl\xE9mentaires</b> \xE0 la vie de l\u2019oc\xE9an.\r\n\r\nPour
       l\u2019utiliser, suivez cet ordre pr\xE9cis :  \r\n<b>1.</b> Glissez d\u2019abord
@@ -73,5 +88,4 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: fd72fd4534532954eb25e0594a2f166f, type: 3}
     video: {fileID: 0}
     highlightObject: {fileID: 0}
-  triggerAutomatically: 0
   triggerAction: Laboratory

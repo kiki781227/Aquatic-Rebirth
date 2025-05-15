@@ -12,7 +12,7 @@ using System.Linq;
 public class DeckManager : MonoBehaviour
     {
         public static DeckManager Instance { get; private set; }
-        public int maxCardsOnTable = 10;
+        public int maxCardsOnTable = 12;
         public Card coinCardData;
 
      // Listes des cartes actifs sur la table
@@ -53,11 +53,9 @@ public class DeckManager : MonoBehaviour
             return;
         }
 
-        if (!activeCards.Contains(card))
-        {
-           activeCards.Add(card);
-           OnCardsUpdate?.Invoke(); // Déclenche la mise à jour du HUD
-        }
+        activeCards.Add(card);
+        OnCardsUpdate?.Invoke(); // Déclenche la mise à jour du HUD
+        
     }
 
 

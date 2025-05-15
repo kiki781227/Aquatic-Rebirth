@@ -7,14 +7,16 @@ using UnityEngine.EventSystems;
 
 public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-  
+
 
     [Header("Donnee typee")]
-    private float dayDuration = 60*5f;
+    private float dayDuration = 170f;
     private float currentTimer;
     private int currentDay = 1;
     private bool isPaused = false; // Gère l'état de pause
     private bool isPointerOver = false;
+    private bool isTutorialTriggered = false; // Gère l'état du tutoriel
+
 
     [Header("References UI")]
     public TMP_Text dayText;
@@ -39,7 +41,7 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject questObject;
     public GameObject sellObject;
     public GameObject craftZone;
-    public GameObject pauseTxt;
+    //public GameObject pauseTxt;
     public GameObject buyplace;
 
 
@@ -76,6 +78,13 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     void EndOfDay()
     {
+
+        if(!isTutorialTriggered)
+        {
+            TutorialManager.Instance.TriggerTutorial("Timer");
+            isTutorialTriggered = true; // Marque le tutoriel comme déclenché
+        }
+
         // Désactive les interactions utilisateur
         SetAllCanvasGroupState(false);
 
@@ -183,7 +192,7 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         buyplace.SetActive(false);
         sellObject.SetActive(false);
-        pauseTxt.SetActive(true);
+        //pauseTxt.SetActive(true);
 
         SetCanvasGroupState(cardManagerCanvasGroup, false);
 
@@ -206,10 +215,10 @@ public class GameTimer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         buyplace.SetActive(true);
         sellObject.SetActive(true);
-        pauseTxt.SetActive(false);
+        //pauseTxt.SetActive(false);
        
         
-   
+        
         btnHide_ShowCanvasGroup.interactable = true;
         btnHide_ShowCanvasGroup.blocksRaycasts = true;
 

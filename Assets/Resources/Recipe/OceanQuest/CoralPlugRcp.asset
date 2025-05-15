@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - {fileID: 11400000, guid: 958566cad851798489f4948f1697cf67, type: 2}
-  - {fileID: 11400000, guid: 11a0d00b8bba03f4fadf0977586af0ab, type: 2}
+  - {fileID: 11400000, guid: 1bbaea10326d672469039c1e08d69516, type: 2}
   result: {fileID: 11400000, guid: 8c96f742bca08224bb46c2bbb1a3b0d0, type: 2}
   cooldown: 3

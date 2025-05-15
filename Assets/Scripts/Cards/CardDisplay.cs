@@ -13,6 +13,8 @@ public class CardDisplay : MonoBehaviour
     public Image traitImage;
     public GameObject priceTrait;
     public GameObject healthTrait;
+    public GameObject foodTrait;
+    public TMP_Text foodText;
     public TMP_Text priceText;
     public TMP_Text nameText;
     public TMP_Text healthText;
@@ -45,12 +47,11 @@ public class CardDisplay : MonoBehaviour
 
     public void Initialize(Card cardData)
     {
-        if (/*!excludeFromCounting &&*/ DeckManager.Instance != null)
+        if ( DeckManager.Instance != null)
         {
             this.cardData = cardData;
             UpdateCardDisplay();
             DeckManager.Instance.RegisterCard(this);
-            //cardData.value = cardData.originalValue;
         }
 
     }
@@ -69,9 +70,11 @@ public class CardDisplay : MonoBehaviour
 
         switch (indexCardType) { 
             case 0: // Human
-                healthText.text = cardData.health.ToString();
                 traitImage.sprite = cardData.cardSprite;
+                foodText.text = cardData.value.ToString();
+                foodTrait.SetActive(true);
                 priceTrait.SetActive(false);
+                healthTrait.SetActive(false);
                 break;
 
             case 1: // Food
